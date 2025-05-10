@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds6ddavx4ctpv"]
+[gd_scene load_steps=4 format=3 uid="uid://ds6ddavx4ctpv"]
 
-[ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://icon.svg" id="1_ia1lp"]
+[ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://assets/icon.svg" id="1_ia1lp"]
 [ext_resource type="PackedScene" uid="uid://crmhr01w6rifg" path="res://player_bot.tscn" id="2_sasra"]
+[ext_resource type="PackedScene" uid="uid://dpvcitogmyuco" path="res://ui.tscn" id="3_sasra"]
 
 [node name="TestScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("3_sasra")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.367188, 0.367188, 0.367188, 1)

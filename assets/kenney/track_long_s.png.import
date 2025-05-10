@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6y8hdrptbtkl"
-path="res://.godot/imported/track_short.png-5568c6593697ab18b5785ed48c634f8e.ctex"
+uid="uid://ce5o4pijvwukb"
+path="res://.godot/imported/track_long_s.png-b9538c70ee84754cf90284f4721699e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://track_short.png"
-dest_files=["res://.godot/imported/track_short.png-5568c6593697ab18b5785ed48c634f8e.ctex"]
+source_file="res://assets/kenney/track_long_s.png"
+dest_files=["res://.godot/imported/track_long_s.png-b9538c70ee84754cf90284f4721699e9.ctex"]
 
 [params]
 
