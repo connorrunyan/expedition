@@ -93,7 +93,7 @@ func rotation_to_direction(rotation_radians: float) -> Vector2:
 # TODO speed of the player should prob be added to these?
 func fire_left():
 	var b = p.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
-	b.color = Color.SADDLE_BROWN
+	b.color = Color.YELLOW
 	b.global_position = left_gun.global_position
 	b.dir = rotation_to_direction(left_gun.global_rotation+deg_to_rad(90.0))
 	get_tree().root.add_child(b)

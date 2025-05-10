@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var sprite = $Sprite2D
 var dir = Vector2.DOWN
-var speed = 1000.0
+var speed = 2000.0
 var color = Color.YELLOW
 
 # Called when the node enters the scene tree for the first time.
