@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=3 uid="uid://crmhr01w6rifg"]
+
+[ext_resource type="Script" uid="uid://bpkoa2linxyxe" path="res://player_bot.gd" id="1_j44ee"]
+[ext_resource type="Texture2D" uid="uid://bb3wtji4yt0gw" path="res://tread_atlas_texture.tres" id="2_tdgst"]
+[ext_resource type="Texture2D" uid="uid://bsaraudskt3f8" path="res://body_3Dyellow.png" id="3_sle0f"]
+
+[sub_resource type="Animation" id="Animation_dtoc6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_8ykbp"]
+resource_name = "tread_backward"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 5, 4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_j44ee"]
+resource_name = "tread_forward"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n4koy"]
+_data = {
+&"RESET": SubResource("Animation_dtoc6"),
+&"tread_backward": SubResource("Animation_8ykbp"),
+&"tread_forward": SubResource("Animation_j44ee")
+}
+
+[sub_resource type="Animation" id="Animation_rfd3m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_7kp10"]
+resource_name = "tread_backward"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 5, 4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_tdgst"]
+resource_name = "tread_forward"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vwqq3"]
+_data = {
+&"RESET": SubResource("Animation_rfd3m"),
+&"tread_backward": SubResource("Animation_7kp10"),
+&"tread_forward": SubResource("Animation_tdgst")
+}
+
+[node name="PlayerBot" type="Node2D"]
+script = ExtResource("1_j44ee")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="LeftTread" type="Sprite2D" parent="."]
+position = Vector2(0, -66)
+texture = ExtResource("2_tdgst")
+vframes = 7
+frame = 5
+
+[node name="LeftTreadAnimationPlayer" type="AnimationPlayer" parent="LeftTread"]
+libraries = {
+&"": SubResource("AnimationLibrary_n4koy")
+}
+
+[node name="RightTread" type="Sprite2D" parent="."]
+position = Vector2(0, 66)
+texture = ExtResource("2_tdgst")
+vframes = 7
+frame = 5
+
+[node name="RightTreadAnimationPlayer" type="AnimationPlayer" parent="RightTread"]
+libraries = {
+&"": SubResource("AnimationLibrary_vwqq3")
+}
+
+[node name="Body" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("3_sle0f")

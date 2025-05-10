@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds6ddavx4ctpv"]
+
+[ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://icon.svg" id="1_ia1lp"]
+[ext_resource type="PackedScene" uid="uid://crmhr01w6rifg" path="res://player_bot.tscn" id="2_sasra"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.367188, 0.367188, 0.367188, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("1_ia1lp")
+
+[node name="PlayerBot" parent="." instance=ExtResource("2_sasra")]
