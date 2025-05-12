@@ -23,6 +23,10 @@ Stats="*res://stats.gd"
 
 project/assembly_name="Expedition"
 
+[global_group]
+
+Player=""
+
 [input]
 
 left={
