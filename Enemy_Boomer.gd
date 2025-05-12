@@ -16,7 +16,7 @@ func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if Health <= 0 && current_State != State.KABOOM:
 		Die()
 	
