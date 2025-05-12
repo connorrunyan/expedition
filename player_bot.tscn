@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://crmhr01w6rifg"]
+[gd_scene load_steps=15 format=3 uid="uid://crmhr01w6rifg"]
 
 [ext_resource type="Script" uid="uid://bpkoa2linxyxe" path="res://player_bot.gd" id="1_j44ee"]
 [ext_resource type="Texture2D" uid="uid://bb3wtji4yt0gw" path="res://tread_atlas_texture.tres" id="2_tdgst"]
 [ext_resource type="Texture2D" uid="uid://bsaraudskt3f8" path="res://assets/kenney/body_3Dyellow.png" id="3_sle0f"]
 [ext_resource type="Texture2D" uid="uid://cqg07ok00rqxm" path="res://assets/gun1.png" id="4_sle0f"]
 [ext_resource type="Texture2D" uid="uid://cdlov0c1sqgyq" path="res://assets/gun2.png" id="5_8ykbp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sle0f"]
+size = Vector2(149, 186)
 
 [sub_resource type="Animation" id="Animation_dtoc6"]
 length = 0.001
@@ -118,8 +121,15 @@ _data = {
 &"tread_forward": SubResource("Animation_tdgst")
 }
 
-[node name="PlayerBot" type="Node2D"]
+[node name="PlayerBot" type="Node2D" groups=["Player"]]
 script = ExtResource("1_j44ee")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_mask = 3
+
+[node name="Collider" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_sle0f")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

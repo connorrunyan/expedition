@@ -104,3 +104,7 @@ func fire_right():
 	b.global_position = right_gun.global_position
 	b.dir = rotation_to_direction(right_gun.global_rotation-deg_to_rad(90.0))
 	get_tree().root.add_child(b)
+
+func take_damage(damage: float):
+	print("Agony.")
+	get_tree().quit()

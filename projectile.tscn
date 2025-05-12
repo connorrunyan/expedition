@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://3lu5xwmgxabp"]
+[gd_scene load_steps=4 format=3 uid="uid://3lu5xwmgxabp"]
 
 [ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://assets/icon.svg" id="1_a85iw"]
 [ext_resource type="Script" uid="uid://d2b6nogtjfl2m" path="res://projectile.gd" id="1_qxf0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxf0c"]
+size = Vector2(11.9659, 12)
 
 [node name="Projectile" type="Node2D"]
 script = ExtResource("1_qxf0c")
@@ -10,3 +13,14 @@ script = ExtResource("1_qxf0c")
 self_modulate = Color(0.902344, 0.620026, 0, 1)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_a85iw")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1.00208, 1)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.01004, 0.995922)
+shape = SubResource("RectangleShape2D_qxf0c")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://pvgxulc2018c"]
+
+[ext_resource type="PackedScene" uid="uid://dpvcitogmyuco" path="res://ui.tscn" id="1_6dqfw"]
+[ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://assets/icon.svg" id="2_bc64o"]
+[ext_resource type="PackedScene" uid="uid://crmhr01w6rifg" path="res://player_bot.tscn" id="3_3efis"]
+[ext_resource type="PackedScene" uid="uid://b0gu53xmeo8hp" path="res://EnemyBasal.tscn" id="4_bc64o"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("1_6dqfw")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.367188, 0.367188, 0.367188, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("2_bc64o")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(0.367188, 0.367188, 0.367188, 1)
+position = Vector2(0, 1272)
+scale = Vector2(10, 10)
+texture = ExtResource("2_bc64o")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+modulate = Color(0.367188, 0.367188, 0.367188, 1)
+position = Vector2(0, -1311)
+scale = Vector2(10, 10)
+texture = ExtResource("2_bc64o")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.367188, 0.367188, 0.367188, 1)
+position = Vector2(1285, 0)
+scale = Vector2(10, 10)
+texture = ExtResource("2_bc64o")
+
+[node name="PlayerBot" parent="." instance=ExtResource("3_3efis")]
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(0.367188, 0.367188, 0.367188, 1)
+position = Vector2(-1298, 0)
+scale = Vector2(10, 10)
+texture = ExtResource("2_bc64o")
+
+[node name="Enemy" parent="." instance=ExtResource("4_bc64o")]
+position = Vector2(915, 417)
