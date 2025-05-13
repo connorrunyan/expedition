@@ -38,6 +38,15 @@ one_shot = true
 [node name="ChargeDuration" type="Timer" parent="."]
 one_shot = true
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+rotation = -0.783591
+scale = Vector2(1, 0.995555)
+shape = SubResource("RectangleShape2D_ggpuv")
+
 [connection signal="body_entered" from="Detector" to="." method="_Player_Entered_Radius"]
 [connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
 [connection signal="timeout" from="ChargeDuration" to="." method="_on_charge_duration_timeout"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
