@@ -24,10 +24,6 @@ var current_shake = 0
 
 var previousState: State = State.WALK
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if Health <= 0:
@@ -79,7 +75,6 @@ func _Player_Entered_Radius(area):
 
 func Player_Hit(body):
 	if body.get_parent().has_method("take_damage"):
-		print("HOW COULD YOU")
 		body.get_parent().take_damage(Damage)
 
 func _on_charge_timer_timeout():
@@ -89,4 +84,6 @@ func _on_charge_timer_timeout():
 
 func _on_charge_duration_timeout():
 	current_State = State.WALK
-	print("Walking")
+
+func _on_hurtbox_body_entered(body):
+	Player_Hit(body)
