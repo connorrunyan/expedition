@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ehjfqeb7nw0"]
+
+[ext_resource type="PackedScene" uid="uid://bce1lpbpk7x84" path="res://station.tscn" id="1_e2a0u"]
+[ext_resource type="PackedScene" uid="uid://crmhr01w6rifg" path="res://player_bot.tscn" id="2_uqx6b"]
+
+[node name="StationTestScene" type="Node2D"]
+
+[node name="Station" parent="." instance=ExtResource("1_e2a0u")]
+scale = Vector2(3, 3)
+
+[node name="PlayerBot" parent="." instance=ExtResource("2_uqx6b")]
