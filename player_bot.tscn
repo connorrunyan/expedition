@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cdlov0c1sqgyq" path="res://assets/gun2.png" id="5_8ykbp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sle0f"]
-size = Vector2(149, 186)
+size = Vector2(154, 186)
 
 [sub_resource type="Animation" id="Animation_dtoc6"]
 length = 0.001
@@ -121,13 +121,11 @@ _data = {
 &"tread_forward": SubResource("Animation_tdgst")
 }
 
-[node name="PlayerBot" type="Node2D" groups=["Player"]]
+[node name="PlayerBot" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 7
 script = ExtResource("1_j44ee")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_mask = 3
-
-[node name="Collider" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_sle0f")
 

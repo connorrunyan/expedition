@@ -67,6 +67,7 @@ scale = Vector2(10, 10)
 texture = ExtResource("2_bc64o")
 
 [node name="PlayerBot" parent="." instance=ExtResource("3_3efis")]
+position = Vector2(-206, 0)
 
 [node name="Enemy" parent="." instance=ExtResource("4_bc64o")]
 position = Vector2(915, 417)

@@ -21,7 +21,6 @@ func _ready():
 func _physics_process(delta):
 	if Health <= 0 && current_State != State.KABOOM:
 		Die()
-	
 	if current_State == State.ATTACK:
 		Navigate(player.global_position)
 	elif current_State == State.KABOOM:
@@ -43,7 +42,8 @@ func Die():
 	var t: Tween = create_tween()
 	t.tween_property(self, "modulate", Color.RED, explosion_timer.wait_time * 0.9)
 	velocity = Vector2(0,0)
-
+	
+	
 func Explode(delta):
 	modulate = lerp(modulate, target_color, delta*10)
 	
@@ -60,9 +60,9 @@ func _on_explosion_timer_timeout():
 
 
 func Player_Hit(body):
-	if body.get_parent().has_method("take_damage"):
+	if body.has_method("take_damage"):
 		print("HOW COULD YOU")
-		body.get_parent().take_damage(Damage)
+		body.take_damage(Damage)
 
 
 func _on_explosion_duration_timeout():
