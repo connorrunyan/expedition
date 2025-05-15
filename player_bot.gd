@@ -9,8 +9,8 @@ const turn_speed = 1.0
 @onready var left_gun = $LeftGun
 @onready var right_gun = $RightGun
 
-const PUSH_FORCE = 250.0
-const MIN_PUSH_FORCE = 150.0
+const PUSH_FORCE = 300.0
+const MIN_PUSH_FORCE = 250.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,6 +36,7 @@ func _physics_process(delta):
 		if c.get_collider() is CharacterBody2D:
 			var push_force = (PUSH_FORCE * velocity.length() / Stats.player_move_speed) + MIN_PUSH_FORCE
 			c.get_collider().velocity = (-c.get_normal() * push_force)
+			print("Pushing")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

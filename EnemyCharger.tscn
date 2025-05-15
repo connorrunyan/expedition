@@ -1,27 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://csrbq0n68odwo"]
+[gd_scene load_steps=6 format=3 uid="uid://csrbq0n68odwo"]
 
 [ext_resource type="Script" uid="uid://dwym50uqyxvmg" path="res://enemy_charger.gd" id="1_q6eob"]
 [ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://assets/icon.svg" id="2_dkjwd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggpuv"]
-size = Vector2(128, 128)
+size = Vector2(119.014, 121.95)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v5xp5"]
 radius = 446.22
 
-[node name="EnemyCharger" type="CharacterBody2D"]
-collision_layer = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6eob"]
+size = Vector2(150.418, 147.654)
+
+[node name="EnemyCharger" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 32
 collision_mask = 3
 script = ExtResource("1_q6eob")
 chargeVelocity = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
 rotation = -0.783591
 scale = Vector2(1, 0.995555)
 shape = SubResource("RectangleShape2D_ggpuv")
 
 [node name="Detector" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 2
 
 [node name="Charge Detection" type="CollisionShape2D" parent="Detector"]
 shape = SubResource("CircleShape2D_v5xp5")
@@ -41,10 +45,11 @@ one_shot = true
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="Hurtbox Shape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1.90735e-06, -1.19209e-07)
 rotation = -0.783591
 scale = Vector2(1, 0.995555)
-shape = SubResource("RectangleShape2D_ggpuv")
+shape = SubResource("RectangleShape2D_q6eob")
 
 [connection signal="body_entered" from="Detector" to="." method="_Player_Entered_Radius"]
 [connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]

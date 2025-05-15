@@ -45,7 +45,8 @@ func Die():
 	
 	
 func Explode(delta):
-	modulate = lerp(modulate, target_color, delta*10)
+	#modulate = lerp(modulate, target_color, delta*10)
+	velocity = lerp(velocity, Vector2(0,0), 0.01)
 	
 func _Player_Entered_Radius(area):
 	print("Player entered Radius")

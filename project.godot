@@ -27,6 +27,7 @@ project/assembly_name="Expedition"
 
 Player=""
 NavMesh=""
+Enemy=""
 
 [input]
 
@@ -90,9 +91,10 @@ fire_right={
 [layer_names]
 
 2d_physics/layer_1="Player"
-2d_physics/layer_2="Enemy"
+2d_physics/layer_2="Grounded Enemy"
 2d_physics/layer_3="Floor"
 2d_physics/layer_4="Space"
+2d_physics/layer_6="Flying Enemy"
 
 [rendering]
 
