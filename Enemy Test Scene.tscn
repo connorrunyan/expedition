@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://pvgxulc2018c"]
+[gd_scene load_steps=9 format=3 uid="uid://pvgxulc2018c"]
 
 [ext_resource type="PackedScene" uid="uid://dpvcitogmyuco" path="res://ui.tscn" id="1_6dqfw"]
 [ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://assets/icon.svg" id="2_bc64o"]
 [ext_resource type="PackedScene" uid="uid://crmhr01w6rifg" path="res://player_bot.tscn" id="3_3efis"]
 [ext_resource type="PackedScene" uid="uid://b0gu53xmeo8hp" path="res://EnemyBasal.tscn" id="4_bc64o"]
 [ext_resource type="PackedScene" uid="uid://csrbq0n68odwo" path="res://EnemyCharger.tscn" id="5_3efis"]
+[ext_resource type="Texture2D" uid="uid://ik4epbgswp51" path="res://assets/kenney/spaceBuilding_017.png" id="6_nvjax"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvjax"]
+size = Vector2(87.1613, 88.0645)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3efis"]
+vertices = PackedVector2Array(684.156, -694.039, 1904.11, -689.039, 1919.87, 622.898, 640.031, -150.992, 616.531, -205.813, 634.961, 217.023, 616.938, 610.906, 607.773, 258.93, 567.141, 276.992, 553.883, -229.992, 624.93, 1905.92, -637.18, 1897.06, -662.188, 615, 208.047, 278.008, 159.102, 257.977, 132.977, 213.688, -662.031, -689.219, -658.031, -1987.9, 663.148, -1976.08, 204.5, -231.008, 141.539, -197.281, -1940.1, 615, -1952.9, -660.219, 136, -137.5)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 3, 2), PackedInt32Array(5, 2, 6, 7), PackedInt32Array(8, 7, 6), PackedInt32Array(0, 4, 9), PackedInt32Array(8, 6, 10, 11, 12, 13), PackedInt32Array(14, 13, 12), PackedInt32Array(15, 14, 12), PackedInt32Array(16, 17, 18, 0, 9, 19), PackedInt32Array(16, 19, 20), PackedInt32Array(12, 21, 22, 16, 20, 23), PackedInt32Array(12, 23, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-672, -699, -1963, -670, -1950, 625, -672, 625, -647, 1907, 635, 1916, 627, 621, 1930, 633, 1914, -699, 694, -704, 673, -1986, -668, -1998)])
 
 [node name="TestScene" type="Node2D"]
 
@@ -35,6 +44,22 @@ position = Vector2(0, -1311)
 scale = Vector2(10, 10)
 texture = ExtResource("2_bc64o")
 
+[node name="SpaceBuilding017" type="Sprite2D" parent="."]
+position = Vector2(388, 23)
+scale = Vector2(4.42857, 4.42857)
+texture = ExtResource("6_nvjax")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SpaceBuilding017"]
+position = Vector2(-87.613, -5.19355)
+scale = Vector2(0.225806, 0.225806)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpaceBuilding017/StaticBody2D"]
+position = Vector2(387, 23)
+scale = Vector2(4.42857, 4.42857)
+shape = SubResource("RectangleShape2D_nvjax")
+
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 modulate = Color(0.367188, 0.367188, 0.367188, 1)
 position = Vector2(1285, 0)
@@ -48,3 +73,12 @@ position = Vector2(915, 417)
 
 [node name="EnemyCharger" parent="." instance=ExtResource("5_3efis")]
 position = Vector2(-995, 558)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["NavMesh"]]
+navigation_polygon = SubResource("NavigationPolygon_3efis")
+
+[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
+position = Vector2(0, 2.52551)
+scale = Vector2(1, 0.987245)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(151, -196.026, 146, -141.328, 143, 211.168, 166, 250.672, 210, 268.904, 565, 267.891, 601, 251.685, 625, 214.207, 630, -153.483, 609, -203.116, 552, -225.401, 207, -226.413)

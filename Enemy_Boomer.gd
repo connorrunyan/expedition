@@ -8,12 +8,14 @@ var current_State: State = State.ATTACK
 @onready var explosion_duration = $ExplosionDuration
 @onready var explosion_sprite = $Explosion/ExplosionSprite
 @onready var explosion = $Explosion
+@onready var navMesh = get_tree().get_first_node_in_group("NavMesh")
+@onready var navigation_agent_2d = $NavigationAgent2D
 
 var target_color:Color = Color(1,0,0,1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	_on_nav_timer_timeout()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -21,11 +23,19 @@ func _physics_process(delta):
 		Die()
 	
 	if current_State == State.ATTACK:
-		move_to_point(player.global_position)
+		Navigate(player.global_position)
 	elif current_State == State.KABOOM:
 		Explode(delta)
 	move_and_slide()
+
+func Navigate(Point):
+	var direction = Vector2()
 	
+	navigation_agent_2d.set_target_position(Point)
+	direction = navigation_agent_2d.get_next_path_position() - global_position
+	direction = direction.normalized()
+	
+	velocity = direction * movement_speed
 
 func Die():
 	current_State = State.KABOOM
@@ -57,3 +67,7 @@ func Player_Hit(body):
 
 func _on_explosion_duration_timeout():
 	queue_free()
+
+
+func _on_nav_timer_timeout():
+	navigation_agent_2d.set_target_position(player.global_position)
