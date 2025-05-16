@@ -17,18 +17,43 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	var left_tread = 0
+	var right_tread = 0
+	if Input.is_action_pressed("left"):
+		turn_left_wokie(delta)
+		left_tread = 2
+		right_tread = 1
+	elif Input.is_action_pressed("right"):
+		turn_right_magat(delta)
+		left_tread = 1
+		right_tread = 2
+	
 	if Input.is_action_pressed("forward"):
 		velocity = rotation_to_direction(rotation) * -Stats.player_move_speed
-		left_tread_anim.play("tread_forward")
-		right_tread_anim.play("tread_forward")
+		left_tread = 1
+		right_tread = 1
 	elif Input.is_action_pressed("backward"):
 		velocity = rotation_to_direction(rotation) * Stats.player_move_speed
-		left_tread_anim.play("tread_backward")
-		right_tread_anim.play("tread_backward")
+		left_tread = 2
+		right_tread = 2
 	else:
-		left_tread_anim.stop()
-		right_tread_anim.stop()
 		velocity = Vector2(0,0)
+	
+	match left_tread:
+		0:
+			left_tread_anim.stop(true)
+		1:
+			left_tread_anim.play("tread_forward")
+		2:
+			left_tread_anim.play("tread_backward")
+	match right_tread:
+		0:
+			right_tread_anim.stop(true)
+		1:
+			right_tread_anim.play("tread_forward")
+		2:
+			right_tread_anim.play("tread_backward")
+	
 	move_and_slide()
 	
 	for i in get_slide_collision_count():
@@ -45,11 +70,6 @@ func _process(delta):
 	var mouse_pos:Vector2 = get_canvas_transform().affine_inverse() * get_viewport().get_mouse_position()
 	var heading = (global_position - mouse_pos).normalized()
 	var target_rotation = atan2(heading.y, heading.x)
-	var turn_radius = deg_to_rad(Stats.player_turn_radius)
-	var slide_mod = 1.0
-	if is_sliding:
-		slide_mod = 0.1
-	rotation = rotate_toward(rotation, target_rotation, delta * Stats.player_turn_radius * slide_mod)
 
 	# rotate gun facing to face mouse
 	# TODO add a rotation speed Stat
@@ -74,7 +94,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("zoom_in"):
 		var z = camera.zoom.x
 		z += 0.05
-		var v = Vector2(minf(z, 2.0),minf(z, 2.0))  #TODO make camera zoom a stat? (potential bit)
+		var v = Vector2(minf(z, 10.0),minf(z, 10.0))  #TODO make camera zoom a stat? (potential bit)
 		camera.zoom = v
 	elif Input.is_action_just_pressed("zoom_out"):
 		var z = camera.zoom.x
@@ -90,6 +110,12 @@ func _process(delta):
 
 func _input(event):
 	pass
+
+func turn_left_wokie(delta):
+	rotate(-(delta * deg_to_rad(Stats.player_turn_radius)))
+
+func turn_right_magat(delta):
+	rotate(+(delta * deg_to_rad(Stats.player_turn_radius)))
 
 func rotation_to_direction(rotation_radians: float) -> Vector2:
 	# Convert rotation from degrees to radians (skip if already in radians)
@@ -119,5 +145,6 @@ func fire_right():
 	get_tree().root.add_child(b)
 
 func take_damage(damage: float):
-	print("Agony.")
-	get_tree().quit()
+	for i in 99:
+		print("Agony.")
+	#get_tree().quit()

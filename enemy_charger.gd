@@ -9,7 +9,7 @@ var chargePosition: Vector2
 
 @export var chargeTime = 2
 
-@export var chargeVelocity: float = 500
+@export var chargeVelocity: float = 1000
 
 
 @onready var charge_timer = $ChargeTimer
