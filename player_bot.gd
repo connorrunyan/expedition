@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 var p = preload("res://projectile.tscn")
 
@@ -9,9 +9,34 @@ const turn_speed = 1.0
 @onready var left_gun = $LeftGun
 @onready var right_gun = $RightGun
 
+const PUSH_FORCE = 300.0
+const MIN_PUSH_FORCE = 250.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
+
+func _physics_process(delta):
+	if Input.is_action_pressed("forward"):
+		velocity = rotation_to_direction(rotation) * -Stats.player_move_speed
+		left_tread_anim.play("tread_forward")
+		right_tread_anim.play("tread_forward")
+	elif Input.is_action_pressed("backward"):
+		velocity = rotation_to_direction(rotation) * Stats.player_move_speed
+		left_tread_anim.play("tread_backward")
+		right_tread_anim.play("tread_backward")
+	else:
+		left_tread_anim.stop()
+		right_tread_anim.stop()
+		velocity = Vector2(0,0)
+	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is CharacterBody2D:
+			var push_force = (PUSH_FORCE * velocity.length() / Stats.player_move_speed) + MIN_PUSH_FORCE
+			c.get_collider().velocity = (-c.get_normal() * push_force)
+			print("Pushing")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -45,18 +70,6 @@ func _process(delta):
 	
 	var target_camera_pos = mouse_pos.lerp(global_position, 0.8)
 	camera.global_position = target_camera_pos
-	
-	if Input.is_action_pressed("forward"):
-		position+=rotation_to_direction(rotation) * -Stats.player_move_speed * delta
-		left_tread_anim.play("tread_forward")
-		right_tread_anim.play("tread_forward")
-	elif Input.is_action_pressed("backward"):
-		position+=rotation_to_direction(rotation) * Stats.player_move_speed * delta
-		left_tread_anim.play("tread_backward")
-		right_tread_anim.play("tread_backward")
-	else:
-		left_tread_anim.stop()
-		right_tread_anim.stop()
 	
 	if Input.is_action_just_pressed("zoom_in"):
 		var z = camera.zoom.x

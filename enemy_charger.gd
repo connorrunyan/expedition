@@ -74,8 +74,8 @@ func _Player_Entered_Radius(area):
 		Init_Charge()
 
 func Player_Hit(body):
-	if body.get_parent().has_method("take_damage"):
-		body.get_parent().take_damage(Damage)
+	if body.has_method("take_damage"):
+		body.take_damage(Damage)
 
 func _on_charge_timer_timeout():
 	current_State = State.CHARGE

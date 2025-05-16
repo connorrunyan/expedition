@@ -13,10 +13,11 @@ radius = 229.002
 [sub_resource type="CircleShape2D" id="CircleShape2D_ggpuv"]
 radius = 310.058
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_v5xp5")
+movement_speed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -0.783591
@@ -55,9 +56,21 @@ modulate = Color(1, 0.176471, 0.231373, 1)
 scale = Vector2(20.3183, 20.3183)
 texture = ExtResource("3_2ty3q")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 40.0
+path_max_distance = 50.0
+debug_enabled = true
+debug_path_custom_point_size = 20.0
+debug_path_custom_line_width = 5.0
+
+[node name="NavTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="area_entered" from="Detector" to="." method="_Player_Entered_Radius"]
 [connection signal="body_entered" from="Detector" to="." method="_Player_Entered_Radius"]
 [connection signal="timeout" from="ExplosionTimer" to="." method="_on_explosion_timer_timeout"]
-[connection signal="timeout" from="ExplosionDuration" to="." method="_on_explosion_timer_timeout"]
 [connection signal="timeout" from="ExplosionDuration" to="." method="_on_explosion_duration_timeout"]
+[connection signal="timeout" from="ExplosionDuration" to="." method="_on_explosion_timer_timeout"]
 [connection signal="body_entered" from="Explosion" to="." method="Player_Hit"]
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]
