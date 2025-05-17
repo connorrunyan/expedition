@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://crmhr01w6rifg"]
+[gd_scene load_steps=16 format=3 uid="uid://crmhr01w6rifg"]
 
 [ext_resource type="Script" uid="uid://bpkoa2linxyxe" path="res://player_bot.gd" id="1_j44ee"]
 [ext_resource type="Texture2D" uid="uid://bb3wtji4yt0gw" path="res://tread_atlas_texture.tres" id="2_tdgst"]
 [ext_resource type="Texture2D" uid="uid://bsaraudskt3f8" path="res://assets/kenney/body_3Dyellow.png" id="3_sle0f"]
 [ext_resource type="Texture2D" uid="uid://cqg07ok00rqxm" path="res://assets/gun1.png" id="4_sle0f"]
 [ext_resource type="Texture2D" uid="uid://cdlov0c1sqgyq" path="res://assets/gun2.png" id="5_8ykbp"]
+[ext_resource type="PackedScene" uid="uid://ur3a506lypfy" path="res://stats_ui.tscn" id="6_8ykbp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sle0f"]
 size = Vector2(154, 186)
@@ -174,3 +175,7 @@ texture = ExtResource("5_8ykbp")
 [node name="Body" type="Sprite2D" parent="."]
 rotation = 3.14159
 texture = ExtResource("3_sle0f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StatsUI" parent="CanvasLayer" instance=ExtResource("6_8ykbp")]
