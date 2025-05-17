@@ -70,7 +70,7 @@ autostart = true
 [connection signal="area_entered" from="Detector" to="." method="_Player_Entered_Radius"]
 [connection signal="body_entered" from="Detector" to="." method="_Player_Entered_Radius"]
 [connection signal="timeout" from="ExplosionTimer" to="." method="_on_explosion_timer_timeout"]
-[connection signal="timeout" from="ExplosionDuration" to="." method="_on_explosion_duration_timeout"]
 [connection signal="timeout" from="ExplosionDuration" to="." method="_on_explosion_timer_timeout"]
+[connection signal="timeout" from="ExplosionDuration" to="." method="_on_explosion_duration_timeout"]
 [connection signal="body_entered" from="Explosion" to="." method="Player_Hit"]
 [connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]
