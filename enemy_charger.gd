@@ -7,26 +7,31 @@ var current_State: State = State.WALK
 var chargeDirection
 var chargePosition: Vector2
 
-@export var WindUpTime = 2.0
-
-@export var chargeVelocity: float = 1000
-@export var ChargeDistance: float = 600
-var distance_Travelled: Vector2 = Vector2(0, 0)
-
 @onready var charge_Shape = $"Detector/Charge Detection"
 @onready var WindupTimer = $WindupTimer
 
 @onready var enemy_sprite = $"Enemy Sprite"
 
+@export var WindUpTime = 2.0
+
+@export var chargeVelocity: float = 1000
+@export var ChargeDistance: float = 800
+var distance_Travelled: Vector2 = Vector2(0, 0)
+
+#Level up variables
+@export var Level_Up_Charge_Speed: float = 0.05
+@export var Level_Up_Charge_Distance: float = 0.05
+
+
 @export var sprite: Node2D
 @export var shake_amount: = 10.0
 @onready var shake_duration: float  = WindupTimer.wait_time
-var current_shake = 0
 
-var previousState: State = State.WALK
+var current_shake: float = 10.0
 
 func _ready():
 	WindupTimer.wait_time = WindUpTime
+	ChargeDistance = ChargeDistance * (1 + Level_Up_Charge_Distance*(Level-1)) 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -43,10 +48,6 @@ func _physics_process(delta):
 		State.CHARGE:
 			charge(delta)
 	
-	if current_State != previousState:
-		print(current_State)
-		previousState = current_State
-	
 	move_and_slide()
 	
 func windUp(delta):
@@ -59,8 +60,9 @@ func windUp(delta):
 func charge(delta):
 	velocity = chargeDirection * chargeVelocity
 	
-	distance_Travelled += chargeDirection * chargeVelocity * delta
-	print(distance_Travelled.length())
+	velocity *= (1 + Level_Up_Charge_Speed*(Level-1))
+	
+	distance_Travelled += velocity * delta
 	
 	if distance_Travelled.length() > ChargeDistance * 2.1:
 		current_State = State.WALK
@@ -82,7 +84,6 @@ func Player_Hit(body):
 		body.take_damage(Damage)
 
 func _on_charge_timer_timeout():
-	print("WOWOWOW")
 	current_State = State.CHARGE
 	current_shake = 0
 
