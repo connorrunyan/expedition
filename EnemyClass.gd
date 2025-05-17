@@ -9,6 +9,9 @@ class_name Enemy
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
+@export var Level_Up_Walk_Speed: float = 0.05
+@export var Level_Up_Damage: float = 0.05
+
 #TODO: Think about what stuff every enemy needs.
 #TODO: Write a pathfinding function.
 #TODO: Extend this into the little explody guy
@@ -19,10 +22,12 @@ func takeDamage(damage: float):
 func die():
 	queue_free()
 
+
 func move_to_point(point: Vector2):
 	var direction = global_position.direction_to(point)
 	
 	velocity = direction * movement_speed
+	velocity *= (1 + Level_Up_Walk_Speed*(Level-1))
 
 # Called when the node enters the scene tree for the first time.
 func _physics_process(delta):

@@ -10,12 +10,22 @@ var current_State: State = State.ATTACK
 @onready var explosion = $Explosion
 @onready var navMesh = get_tree().get_first_node_in_group("NavMesh")
 @onready var navigation_agent_2d = $NavigationAgent2D
+@onready var explosion_Hurtbox = $Explosion/ExplosionRadius
+
+@export var Explosion_Radius: float = 300
+
+#Level Up variables
+@export var Lvl_Up_Radius_Increase: float = 0.05
 
 var target_color:Color = Color(1,0,0,1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_on_nav_timer_timeout()
+	var New_Explosion = CircleShape2D.new()
+	New_Explosion.radius = Explosion_Radius #The size that you want
+	explosion_Hurtbox.shape = New_Explosion
+	explosion_sprite.scale = Vector2(explosion_sprite.scale.x * Explosion_Radius*(1 + Level_Up_Walk_Speed*(Level-1))/Explosion_Radius, explosion_sprite.scale.y * Explosion_Radius*(1 + Level_Up_Walk_Speed*(Level-1))/Explosion_Radius)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -35,6 +45,7 @@ func Navigate(Point):
 	direction = direction.normalized()
 	
 	velocity = direction * movement_speed
+	velocity *= (1 + Level_Up_Walk_Speed*(Level-1))
 
 func Die():
 	current_State = State.KABOOM
