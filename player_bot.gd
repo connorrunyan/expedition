@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-var p = preload("res://projectile.tscn")
+var p_bullet = preload("res://bulletProjectile.tscn")
+var p_laser = preload("res://laserProjectile.tscn")
 var upgrade = preload("res://upgrade.tscn")
 
 const turn_speed = 1.0
@@ -81,8 +82,8 @@ func _process(delta):
 
 	# rotate gun facing to face mouse
 	# TODO add a rotation speed Stat
-	left_gun.global_rotation = rotate_toward(left_gun.global_rotation, target_rotation+90.0, delta * 100)
-	right_gun.global_rotation = rotate_toward(right_gun.global_rotation, target_rotation-90.0, delta * 100)
+	left_gun.global_rotation = rotate_toward(left_gun.global_rotation, target_rotation+deg_to_rad(90.0), delta * 100)
+	right_gun.global_rotation = rotate_toward(right_gun.global_rotation, target_rotation-deg_to_rad(90.0), delta * 100)
 	
 	# cap gun facing bounds to a certain arc.  turn this into a Stat
 	if left_gun.rotation_degrees > 80.0:
@@ -139,15 +140,13 @@ func rotation_to_direction(rotation_radians: float) -> Vector2:
 
 # TODO speed of the player should prob be added to these?
 func fire_left():
-	var b = p.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
-	b.color = Color.YELLOW
+	var b = p_bullet.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	b.global_position = left_gun.global_position
 	b.dir = rotation_to_direction(left_gun.global_rotation+deg_to_rad(90.0))
 	get_tree().root.add_child(b)
 
 func fire_right():
-	var b = p.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
-	b.color = Color.RED
+	var b = p_laser.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	b.global_position = right_gun.global_position
 	b.dir = rotation_to_direction(right_gun.global_rotation-deg_to_rad(90.0))
 	get_tree().root.add_child(b)

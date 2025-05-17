@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ehjfqeb7nw0"]
+[gd_scene load_steps=6 format=3 uid="uid://ehjfqeb7nw0"]
 
 [ext_resource type="PackedScene" uid="uid://bce1lpbpk7x84" path="res://station.tscn" id="1_e2a0u"]
 [ext_resource type="PackedScene" uid="uid://crmhr01w6rifg" path="res://player_bot.tscn" id="2_uqx6b"]
 [ext_resource type="PackedScene" uid="uid://csrbq0n68odwo" path="res://EnemyCharger.tscn" id="3_uqx6b"]
+[ext_resource type="PackedScene" uid="uid://fake285l7wrm" path="res://sun.tscn" id="4_tjf73"]
+[ext_resource type="AudioStream" uid="uid://dwldll57mwyp" path="res://assets/audio/replaceTHIS/Destiny 2_ Beyond Light OST - Shadow Thief Reborn.mp3" id="5_slk1t"]
 
 [node name="StationTestScene" type="Node2D"]
+
+[node name="Sun" parent="." instance=ExtResource("4_tjf73")]
 
 [node name="Station" parent="." instance=ExtResource("1_e2a0u")]
 scale = Vector2(3, 3)
@@ -13,3 +17,8 @@ scale = Vector2(3, 3)
 
 [node name="EnemyCharger" parent="." instance=ExtResource("3_uqx6b")]
 position = Vector2(-1025, 1407)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_slk1t")
+volume_db = -10.0
+autoplay = true
