@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var p = preload("res://projectile.tscn")
+var upgrade = preload("res://upgrade.tscn")
 
 const turn_speed = 1.0
 @onready var left_tread_anim = $LeftTread/LeftTreadAnimationPlayer
@@ -70,6 +71,13 @@ func _process(delta):
 	var mouse_pos:Vector2 = get_canvas_transform().affine_inverse() * get_viewport().get_mouse_position()
 	var heading = (global_position - mouse_pos).normalized()
 	var target_rotation = atan2(heading.y, heading.x)
+
+	# TODO remove this, just for testing
+	if Input.is_action_just_pressed("reload"):
+		var u = upgrade.instantiate()
+		u.position = mouse_pos
+		get_node("/root").add_child(u)
+
 
 	# rotate gun facing to face mouse
 	# TODO add a rotation speed Stat

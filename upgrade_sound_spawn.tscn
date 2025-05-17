@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://5jv57v1hhvsx"]
+
+[ext_resource type="Script" uid="uid://bmgcgeht26iho" path="res://upgrade_sound_spawn.gd" id="1_3j7jn"]
+[ext_resource type="AudioStream" uid="uid://cpdraju27ar2n" path="res://assets/audio/bfxr/Pickup.wav" id="2_mae6q"]
+
+[node name="UpgradeSoundSpawn" type="Node2D"]
+script = ExtResource("1_3j7jn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mae6q")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
