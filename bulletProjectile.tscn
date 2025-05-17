@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2t67leb70nby"]
+
+[ext_resource type="Script" uid="uid://d2b6nogtjfl2m" path="res://projectile.gd" id="1_3ugb7"]
+[ext_resource type="Texture2D" uid="uid://cyryoytujok05" path="res://assets/kenney/space shooter redux/Lasers/laserYeller08.png" id="2_3ugb7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ugb7"]
+radius = 23.7121
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_3ugb7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3ugb7")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1.00208, 1)
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.01004, 0.995922)
+shape = SubResource("CircleShape2D_3ugb7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

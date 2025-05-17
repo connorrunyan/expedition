@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bce1lpbpk7x84"]
+[gd_scene load_steps=10 format=3 uid="uid://bce1lpbpk7x84"]
 
+[ext_resource type="Texture2D" uid="uid://d4bxeactgtuk" path="res://assets/kenney/Sprites X2/Rocket parts/spaceRocketParts_030.png" id="1_87b1w"]
 [ext_resource type="Texture2D" uid="uid://ik4epbgswp51" path="res://assets/kenney/spaceBuilding_017.png" id="1_lu35c"]
 [ext_resource type="Texture2D" uid="uid://bjqoq65inatnn" path="res://assets/kenney/spaceRockets_001.png" id="1_sum1q"]
 [ext_resource type="Texture2D" uid="uid://clg3h0l4uyh58" path="res://assets/kenney/spaceStation_024.png" id="2_oblqs"]
+[ext_resource type="Texture2D" uid="uid://csl7kjqemv7t7" path="res://assets/kenney/space shooter redux/Parts/cockpitYellow_0.png" id="4_bmuap"]
+[ext_resource type="Texture2D" uid="uid://b7hqked4fm4gq" path="res://assets/kenney/space shooter redux/Parts/cockpitYellow_3.png" id="5_7imi8"]
+[ext_resource type="Texture2D" uid="uid://bgna2tv74qn6r" path="res://assets/kenney/Sprites X2/Building/spaceBuilding_002.png" id="7_yr24d"]
+[ext_resource type="Texture2D" uid="uid://l5whkqv4pwpt" path="res://assets/kenney/Sprites X2/Building/spaceBuilding_001.png" id="8_rehnx"]
+[ext_resource type="Texture2D" uid="uid://p4pebowqcm4p" path="res://assets/kenney/sci fi rts/Structure/scifiStructure_05.png" id="9_atg86"]
 
 [node name="Station" type="Node2D"]
+position = Vector2(-7, 0)
 
 [node name="Collision" type="Node2D" parent="."]
 
@@ -13,196 +20,289 @@ collision_layer = 4
 collision_mask = 7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
-polygon = PackedVector2Array(-111, -130, -117, -2282, -1507, -2288, -1507, -2532, 1765, -2533, 1757, -5073, -6416, -5032, -6435, -13, -2146, -5, -2154, -876, -4799, -843, -4791, -1112, -1877, -1112, -1877, -127)
+polygon = PackedVector2Array(-197, -223, -192, -1449, -766, -1438, -770, -1867, -12, -1868, 10, -5058, -6416, -5032, -6435, -13, -1304, 3, -1316, -352, -2698, -358, -2704, -780, -894, -780, -863, -217)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
-polygon = PackedVector2Array(148, -118, 132, -2281, 1716, -2270, 2634, -1336, 2639, -118)
+polygon = PackedVector2Array(236, -212, 225, -1440, 933, -1461, 1838, -571, 1829, -214)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
+position = Vector2(-84, 1149)
+polygon = PackedVector2Array(593, -662, 593, -992, 680, -1038, 1324, -1034, 1420, -980, 1407, -662)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
-polygon = PackedVector2Array(2894, -6, 8034, 8, 8047, -5205, 1761, -5070, 1734, -2554, 2881, -1435)
+polygon = PackedVector2Array(2247, 0, 8034, 8, 8042, -4932, 15, -5031, 15, -1879, 1171, -1875, 2267, -748)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
-polygon = PackedVector2Array(-128, 128, -115, 1882, 10, 1882, 11, 6495, -6471, 6401, -6401, -35, -2126, -35, -2156, 902, -4812, 898, -4812, 1128, -1885, 1155, -1889, 135)
+polygon = PackedVector2Array(-212, 211, -175, 1232, 17, 1225, 11, 6495, -6471, 6401, -6401, -35, -1285, -18, -1307, 367, -2736, 367, -2706, 781, -871, 818, -871, 204)
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
-polygon = PackedVector2Array(136, 133, 2508, 129, 2078, 567, 533, 575, 537, 822, 2162, 822, 2893, 124, 2893, -39, 8011, -27, 8126, 6680, -48, 6472, -14, 1877, 136, 1882)
+polygon = PackedVector2Array(247, 796, 1631, 811, 2267, 226, 2267, -11, 2893, -39, 8011, -27, 8126, 6680, -48, 6472, -20, 1203, 232, 1203)
+
+[node name="SpaceRocketParts030" type="Sprite2D" parent="Collision/StaticBody2D"]
+position = Vector2(634, -503)
+texture = ExtResource("1_87b1w")
 
 [node name="BackgroundStuff" type="Node2D" parent="."]
 
 [node name="SpaceRockets001" type="Sprite2D" parent="BackgroundStuff"]
-position = Vector2(-2, 1327)
+position = Vector2(43, 449)
 scale = Vector2(3, 3)
 texture = ExtResource("1_sum1q")
 
 [node name="SpaceRockets002" type="Sprite2D" parent="BackgroundStuff"]
-position = Vector2(-561, 1344)
+position = Vector2(-516, 466)
 scale = Vector2(3, 3)
 texture = ExtResource("1_sum1q")
 
 [node name="SpaceRockets003" type="Sprite2D" parent="BackgroundStuff"]
-position = Vector2(569, 1324)
+position = Vector2(614, 446)
 scale = Vector2(3, 3)
 texture = ExtResource("1_sum1q")
 
 [node name="NorthPanels" type="Node2D" parent="BackgroundStuff"]
-position = Vector2(0, -177)
+position = Vector2(0, 226)
 
 [node name="SpaceStation028" type="Sprite2D" parent="BackgroundStuff/NorthPanels"]
-position = Vector2(-2447, -807)
+position = Vector2(-1584, -782.999)
 rotation = 1.5708
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_oblqs")
 
 [node name="SpaceStation024" type="Sprite2D" parent="BackgroundStuff/NorthPanels"]
-position = Vector2(-2906, -807)
+position = Vector2(-1868, -782.999)
 rotation = 1.5708
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_oblqs")
 
 [node name="SpaceStation025" type="Sprite2D" parent="BackgroundStuff/NorthPanels"]
-position = Vector2(-3397, -807)
+position = Vector2(-2152, -782.999)
 rotation = 1.5708
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_oblqs")
 
 [node name="SpaceStation026" type="Sprite2D" parent="BackgroundStuff/NorthPanels"]
-position = Vector2(-3894, -807)
+position = Vector2(-2431, -783)
 rotation = 1.5708
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_oblqs")
 
 [node name="SpaceStation027" type="Sprite2D" parent="BackgroundStuff/NorthPanels"]
-position = Vector2(-4399, -807)
+position = Vector2(-2696, -783)
 rotation = -1.5708
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_oblqs")
 
 [node name="SouthPanels" type="Node2D" parent="BackgroundStuff"]
-position = Vector2(7, 1817)
+position = Vector2(7, 1372)
 
 [node name="SpaceStation028" type="Sprite2D" parent="BackgroundStuff/SouthPanels"]
-position = Vector2(-2447, -807)
+position = Vector2(-1584, -782.999)
 rotation = 1.5708
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_oblqs")
 
 [node name="SpaceStation024" type="Sprite2D" parent="BackgroundStuff/SouthPanels"]
-position = Vector2(-2906, -807)
+position = Vector2(-1868, -782.999)
 rotation = 1.5708
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_oblqs")
 
 [node name="SpaceStation025" type="Sprite2D" parent="BackgroundStuff/SouthPanels"]
-position = Vector2(-3397, -807)
+position = Vector2(-2152, -782.999)
 rotation = 1.5708
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_oblqs")
 
 [node name="SpaceStation026" type="Sprite2D" parent="BackgroundStuff/SouthPanels"]
-position = Vector2(-3894, -807)
+position = Vector2(-2431, -783)
 rotation = 1.5708
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_oblqs")
 
 [node name="SpaceStation027" type="Sprite2D" parent="BackgroundStuff/SouthPanels"]
-position = Vector2(-4399, -807)
+position = Vector2(-2696, -783)
 rotation = -1.5708
-scale = Vector2(5, 5)
+scale = Vector2(3, 3)
 texture = ExtResource("2_oblqs")
+
+[node name="CockpitYellow0" type="Sprite2D" parent="BackgroundStuff"]
+position = Vector2(4.99994, -2072)
+scale = Vector2(10, 10)
+texture = ExtResource("4_bmuap")
+
+[node name="CockpitYellow3" type="Sprite2D" parent="BackgroundStuff"]
+position = Vector2(362, -1666)
+scale = Vector2(8, 8)
+texture = ExtResource("5_7imi8")
+
+[node name="CockpitYellow4" type="Sprite2D" parent="BackgroundStuff"]
+position = Vector2(-379, -1669)
+scale = Vector2(8, 8)
+texture = ExtResource("5_7imi8")
 
 [node name="GroundStuff" type="Node2D" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="GroundStuff"]
-offset_left = 135.0
-offset_top = -2512.0
-offset_right = 4529.0
-offset_bottom = -2258.0
+offset_left = 225.0
+offset_top = -1490.0
+offset_right = 2938.0
+offset_bottom = -1066.0
 rotation = 1.5708
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="GroundStuff"]
-offset_left = 1977.0
-offset_top = 650.0
-offset_right = 2984.0
-offset_bottom = 904.0
+offset_left = 1347.0
+offset_top = 529.0
+offset_right = 2216.0
+offset_bottom = 948.0
 rotation = -0.785398
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="GroundStuff"]
-offset_left = -1898.0
-offset_top = -126.0
-offset_right = 2869.0
-offset_bottom = 128.0
+offset_left = -1276.0
+offset_top = -214.0
+offset_right = 2246.0
+offset_bottom = 212.0
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect4" type="TextureRect" parent="GroundStuff"]
-offset_left = 533.0
-offset_top = 567.0
-offset_right = 2155.0
+offset_left = 220.0
+offset_top = 203.0
+offset_right = 1634.0
 offset_bottom = 821.0
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="GroundStuff"]
-offset_left = 2894.0
-offset_top = -1466.0
-offset_right = 4491.0
-offset_bottom = -1212.0
+offset_left = 2252.0
+offset_top = -777.0
+offset_right = 2820.0
+offset_bottom = -364.0
 rotation = 1.5708
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect6" type="TextureRect" parent="GroundStuff"]
-offset_left = 1760.0
-offset_top = -2571.0
-offset_right = 3357.0
-offset_bottom = -2317.0
+offset_left = 1134.0
+offset_top = -1876.0
+offset_right = 2731.0
+offset_bottom = -1445.0
 rotation = 0.785398
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect7" type="TextureRect" parent="GroundStuff"]
-offset_left = -1511.0
-offset_top = -2537.0
-offset_right = 1739.0
-offset_bottom = -2283.0
+offset_left = -775.0
+offset_top = -1874.0
+offset_right = 1160.0
+offset_bottom = -1449.0
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect8" type="TextureRect" parent="GroundStuff"]
-offset_left = -1894.0
-offset_top = -1122.0
-offset_right = 365.0
-offset_bottom = -868.0
+offset_left = -885.0
+offset_top = -742.0
+offset_right = 662.0
+offset_bottom = -325.0
 rotation = 1.5708
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect9" type="TextureRect" parent="GroundStuff"]
-offset_left = -4796.0
-offset_top = -1110.0
-offset_right = -1893.0
-offset_bottom = -856.0
+offset_left = -2721.0
+offset_top = -769.0
+offset_right = -880.0
+offset_bottom = -356.0
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect10" type="TextureRect" parent="GroundStuff"]
-offset_left = -4806.0
-offset_top = 894.0
-offset_right = -1892.0
-offset_bottom = 1148.0
+offset_left = -2726.0
+offset_top = 384.0
+offset_right = -885.0
+offset_bottom = 805.0
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
+
+[node name="FloorDecos" type="Node2D" parent="."]
+
+[node name="TextureRect11" type="TextureRect" parent="FloorDecos"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_top = 33.0
+offset_right = 1820.0
+offset_bottom = 620.0
+grow_vertical = 2
+texture = ExtResource("7_yr24d")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect12" type="TextureRect" parent="FloorDecos"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -2561.0
+offset_top = -606.0
+offset_right = -1138.0
+offset_bottom = -506.0
+grow_vertical = 2
+texture = ExtResource("8_rehnx")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect13" type="TextureRect" parent="FloorDecos"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -2553.0
+offset_top = 547.0
+offset_right = -1130.0
+offset_bottom = 647.0
+grow_vertical = 2
+texture = ExtResource("8_rehnx")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect14" type="TextureRect" parent="FloorDecos"]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 999.0
+offset_top = -1734.0
+offset_right = 2574.0
+offset_bottom = -1634.0
+grow_vertical = 2
+rotation = 0.785398
+texture = ExtResource("8_rehnx")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ScifiStructure05" type="Sprite2D" parent="FloorDecos"]
+position = Vector2(915, 307)
+scale = Vector2(3, 3)
+texture = ExtResource("9_atg86")
+
+[node name="ScifiStructure07" type="Sprite2D" parent="FloorDecos"]
+position = Vector2(1187, 307)
+scale = Vector2(3, 3)
+texture = ExtResource("9_atg86")
+
+[node name="ScifiStructure06" type="Sprite2D" parent="FloorDecos"]
+position = Vector2(643, 303)
+scale = Vector2(3, 3)
+texture = ExtResource("9_atg86")

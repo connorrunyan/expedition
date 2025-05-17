@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://df20qhenqdhoj"]
+
+[ext_resource type="Shader" uid="uid://dweoeo504vf4d" path="res://sunshader.gdshader" id="1_m6q8x"]
+
+[resource]
+shader = ExtResource("1_m6q8x")
+shader_parameter/brightness = 0.1
+shader_parameter/ray_brightness = 1.0
+shader_parameter/gamma = 8.0
+shader_parameter/spot_brightness = 10.0
+shader_parameter/ray_density = 10.0
+shader_parameter/curvature = 15.0
+shader_parameter/rgb = Vector3(4, 1, 0.1)
+shader_parameter/sin_freq = 13.0

@@ -26,7 +26,7 @@ grow_vertical = 2
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "TAB"
+text = "STATS (TAB)"
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]
 visible = false
