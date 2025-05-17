@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://csrbq0n68odwo"]
+[gd_scene load_steps=5 format=3 uid="uid://csrbq0n68odwo"]
 
 [ext_resource type="Script" uid="uid://dwym50uqyxvmg" path="res://enemy_charger.gd" id="1_q6eob"]
 [ext_resource type="Texture2D" uid="uid://j6gjafeka7dg" path="res://assets/kenney/ufo/shipBeige_manned.png" id="2_q6eob"]
@@ -6,15 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7775j"]
 radius = 213.192
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v5xp5"]
-radius = 1537.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkjwd"]
 radius = 212.021
 
 [node name="EnemyCharger" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 32
-collision_mask = 34
+collision_mask = 32
 script = ExtResource("1_q6eob")
 chargeVelocity = 2000.0
 movement_speed = 200.0
@@ -24,21 +21,12 @@ position = Vector2(1, -1)
 scale = Vector2(1, 0.995555)
 shape = SubResource("CircleShape2D_7775j")
 
-[node name="Detector" type="Area2D" parent="."]
-collision_layer = 2
-
-[node name="Charge Detection" type="CollisionShape2D" parent="Detector"]
-shape = SubResource("CircleShape2D_v5xp5")
-
 [node name="Enemy Sprite" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("2_q6eob")
 
-[node name="ChargeTimer" type="Timer" parent="."]
+[node name="WindupTimer" type="Timer" parent="."]
 wait_time = 2.0
-one_shot = true
-
-[node name="ChargeDuration" type="Timer" parent="."]
 one_shot = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -49,7 +37,5 @@ position = Vector2(1.90735e-06, -1.19209e-07)
 scale = Vector2(1, 0.995555)
 shape = SubResource("CircleShape2D_dkjwd")
 
-[connection signal="body_entered" from="Detector" to="." method="_Player_Entered_Radius"]
-[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
-[connection signal="timeout" from="ChargeDuration" to="." method="_on_charge_duration_timeout"]
+[connection signal="timeout" from="WindupTimer" to="." method="_on_charge_timer_timeout"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
