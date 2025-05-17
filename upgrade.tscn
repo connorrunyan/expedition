@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://vkddm7ohc5nb"]
+[gd_scene load_steps=3 format=3 uid="uid://vkddm7ohc5nb"]
 
 [ext_resource type="Script" uid="uid://coyyi16ktmhga" path="res://upgrade.gd" id="1_w52ek"]
+[ext_resource type="Texture2D" uid="uid://rkau1c2wwikv" path="res://assets/kenney/tiny dungeon/tile_0091.png" id="2_hgitt"]
 
 [node name="Upgrade" type="Node2D"]
 scale = Vector2(3, 3)
@@ -68,6 +69,21 @@ text = "Downside"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -42.6667
+offset_right = 20.0
+offset_bottom = -2.66669
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_hgitt")
 
 [connection signal="mouse_entered" from="Panel" to="." method="_on_panel_mouse_entered"]
 [connection signal="mouse_exited" from="Panel" to="." method="_on_panel_mouse_exited"]
