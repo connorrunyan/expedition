@@ -20,23 +20,23 @@ collision_layer = 4
 collision_mask = 7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
-polygon = PackedVector2Array(-197, -223, -192, -1449, -766, -1438, -770, -1867, -12, -1868, 10, -5058, -6416, -5032, -6435, -13, -1304, 3, -1316, -352, -2698, -358, -2704, -780, -894, -780, -863, -217)
+polygon = PackedVector2Array(-197, -223, -179, -850, -697, -864, -717, -1247, -17, -1281, 10, -5058, -6416, -5032, -6435, -13, -1304, 3, -1316, -352, -2698, -358, -2704, -780, -894, -780, -863, -217)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
-polygon = PackedVector2Array(236, -212, 225, -1440, 933, -1461, 1838, -571, 1829, -214)
+polygon = PackedVector2Array(236, -212, 225, -844, 871, -850, 1557, -211)
 
 [node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
 position = Vector2(-84, 1149)
 polygon = PackedVector2Array(593, -662, 593, -992, 680, -1038, 1324, -1034, 1420, -980, 1407, -662)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
-polygon = PackedVector2Array(2247, 0, 8034, 8, 8042, -4932, 15, -5031, 15, -1879, 1171, -1875, 2267, -748)
+polygon = PackedVector2Array(1987, -9, 8034, 8, 8042, -4932, 15, -5031, -11, -1261, 1073, -1254, 1974, -380)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
 polygon = PackedVector2Array(-212, 211, -175, 1232, 17, 1225, 11, 6495, -6471, 6401, -6401, -35, -1285, -18, -1307, 367, -2736, 367, -2706, 781, -871, 818, -871, 204)
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Collision/StaticBody2D"]
-polygon = PackedVector2Array(247, 796, 1631, 811, 2267, 226, 2267, -11, 2893, -39, 8011, -27, 8126, 6680, -48, 6472, -20, 1203, 232, 1203)
+polygon = PackedVector2Array(247, 796, 1631, 811, 1967, 172, 1974, -23, 2893, -39, 8011, -27, 8126, 6680, -48, 6472, -20, 1203, 232, 1203)
 
 [node name="SpaceRocketParts030" type="Sprite2D" parent="Collision/StaticBody2D"]
 position = Vector2(634, -503)
@@ -126,17 +126,17 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_oblqs")
 
 [node name="CockpitYellow0" type="Sprite2D" parent="BackgroundStuff"]
-position = Vector2(4.99994, -2072)
+position = Vector2(4.99994, -1406)
 scale = Vector2(10, 10)
 texture = ExtResource("4_bmuap")
 
 [node name="CockpitYellow3" type="Sprite2D" parent="BackgroundStuff"]
-position = Vector2(362, -1666)
+position = Vector2(362, -1000)
 scale = Vector2(8, 8)
 texture = ExtResource("5_7imi8")
 
 [node name="CockpitYellow4" type="Sprite2D" parent="BackgroundStuff"]
-position = Vector2(-379, -1669)
+position = Vector2(-379, -1003)
 scale = Vector2(8, 8)
 texture = ExtResource("5_7imi8")
 
@@ -144,20 +144,20 @@ texture = ExtResource("5_7imi8")
 
 [node name="TextureRect" type="TextureRect" parent="GroundStuff"]
 offset_left = 225.0
-offset_top = -1490.0
-offset_right = 2938.0
-offset_bottom = -1066.0
+offset_top = -1207.0
+offset_right = 2655.0
+offset_bottom = -783.0
 rotation = 1.5708
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="GroundStuff"]
-offset_left = 1347.0
-offset_top = 529.0
-offset_right = 2216.0
-offset_bottom = 948.0
-rotation = -0.785398
+offset_left = 1261.0
+offset_top = 587.0
+offset_right = 1975.0
+offset_bottom = 1006.0
+rotation = -1.0472
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
@@ -165,7 +165,7 @@ stretch_mode = 1
 [node name="TextureRect3" type="TextureRect" parent="GroundStuff"]
 offset_left = -1276.0
 offset_top = -214.0
-offset_right = 2246.0
+offset_right = 1761.0
 offset_bottom = 212.0
 texture = ExtResource("1_lu35c")
 expand_mode = 1
@@ -174,37 +174,37 @@ stretch_mode = 1
 [node name="TextureRect4" type="TextureRect" parent="GroundStuff"]
 offset_left = 220.0
 offset_top = 203.0
-offset_right = 1634.0
-offset_bottom = 821.0
+offset_right = 1647.0
+offset_bottom = 801.0
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="GroundStuff"]
-offset_left = 2252.0
-offset_top = -777.0
-offset_right = 2820.0
-offset_bottom = -364.0
+offset_left = 1976.0
+offset_top = -394.0
+offset_right = 2544.0
+offset_bottom = 19.0
 rotation = 1.5708
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect6" type="TextureRect" parent="GroundStuff"]
-offset_left = 1134.0
-offset_top = -1876.0
-offset_right = 2731.0
-offset_bottom = -1445.0
+offset_left = 1086.0
+offset_top = -1264.0
+offset_right = 2326.0
+offset_bottom = -833.0
 rotation = 0.785398
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
 
 [node name="TextureRect7" type="TextureRect" parent="GroundStuff"]
-offset_left = -775.0
-offset_top = -1874.0
-offset_right = 1160.0
-offset_bottom = -1449.0
+offset_left = -701.0
+offset_top = -1268.0
+offset_right = 1073.0
+offset_bottom = -843.0
 texture = ExtResource("1_lu35c")
 expand_mode = 1
 stretch_mode = 1
@@ -243,9 +243,9 @@ stretch_mode = 1
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 63.0
+offset_left = 245.0
 offset_top = 33.0
-offset_right = 1820.0
+offset_right = 1585.0
 offset_bottom = 620.0
 grow_vertical = 2
 texture = ExtResource("7_yr24d")
@@ -282,10 +282,10 @@ stretch_mode = 1
 custom_minimum_size = Vector2(100, 100)
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 999.0
-offset_top = -1734.0
-offset_right = 2574.0
-offset_bottom = -1634.0
+offset_left = 952.0
+offset_top = -1108.0
+offset_right = 2289.0
+offset_bottom = -1008.0
 grow_vertical = 2
 rotation = 0.785398
 texture = ExtResource("8_rehnx")
