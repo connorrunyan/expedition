@@ -17,10 +17,11 @@ var player_laser_damage = 5.0
 #Enemy Stats
 var total_Level = 1
 #Exploder Stats
-var explode_Level = 0
+var explode_Level = 20
 var explode_movement_speed: float = 100.0
 var explode_Damage: float = 2
 var explode_MaxHealth: float = 10
+var explode_detection_radius = 250
 var explode_Radius: float = 300
 var explode_Timer: float = 1.2
 

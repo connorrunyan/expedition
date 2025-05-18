@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0gu53xmeo8hp"]
+[gd_scene load_steps=6 format=3 uid="uid://b0gu53xmeo8hp"]
 
 [ext_resource type="Script" uid="uid://bguix6f7qhrc" path="res://Enemy_Boomer.gd" id="1_v5xp5"]
 [ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://assets/icon.svg" id="2_2ty3q"]
@@ -7,13 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggpuv"]
 size = Vector2(128, 128)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_v5xp5"]
-radius = 229.002
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ggpuv"]
 radius = 300.0
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="EnemyKaboom" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_v5xp5")
@@ -24,19 +21,9 @@ rotation = -0.783591
 scale = Vector2(1, 0.995555)
 shape = SubResource("RectangleShape2D_ggpuv")
 
-[node name="Detector" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="Explosion Detection" type="CollisionShape2D" parent="Detector"]
-shape = SubResource("CircleShape2D_v5xp5")
-
 [node name="Enemy Sprite" type="Sprite2D" parent="."]
 rotation = -0.783591
 texture = ExtResource("2_2ty3q")
-
-[node name="ExplosionTimer" type="Timer" parent="."]
-wait_time = 1.2
-one_shot = true
 
 [node name="ExplosionDuration" type="Timer" parent="."]
 wait_time = 0.2
@@ -67,10 +54,6 @@ debug_path_custom_line_width = 5.0
 wait_time = 0.1
 autostart = true
 
-[connection signal="area_entered" from="Detector" to="." method="_Player_Entered_Radius"]
-[connection signal="body_entered" from="Detector" to="." method="_Player_Entered_Radius"]
-[connection signal="timeout" from="ExplosionTimer" to="." method="_on_explosion_timer_timeout"]
-[connection signal="timeout" from="ExplosionDuration" to="." method="_on_explosion_timer_timeout"]
 [connection signal="timeout" from="ExplosionDuration" to="." method="_on_explosion_duration_timeout"]
 [connection signal="body_entered" from="Explosion" to="." method="Player_Hit"]
 [connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]
