@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3tekle60erd1"]
+
+[ext_resource type="Script" uid="uid://bcda74gtqklgv" path="res://music_man.gd" id="1_qsvpn"]
+[ext_resource type="AudioStream" uid="uid://d2tvprynjch71" path="res://assets/audio/music/destroy the sun.ogg" id="2_uymb0"]
+[ext_resource type="AudioStream" uid="uid://dg8v5xxhaqyo7" path="res://assets/audio/incomptech/I Can Feel it Coming.mp3" id="2_wbw63"]
+[ext_resource type="AudioStream" uid="uid://epdqabfj5lv2" path="res://assets/audio/incomptech/Hot Pursuit.mp3" id="3_1c72l"]
+[ext_resource type="AudioStream" uid="uid://cqt3nfwhnbfj4" path="res://assets/audio/incomptech/Outfoxing the Fox.mp3" id="4_kdna8"]
+[ext_resource type="AudioStream" uid="uid://cd1oykxvm0n1" path="res://assets/audio/incomptech/Darkling.mp3" id="5_lecio"]
+
+[node name="MusicMan" type="Node"]
+script = ExtResource("1_qsvpn")
+
+[node name="iCanFeelItComing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wbw63")
+
+[node name="hotPursuit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1c72l")
+
+[node name="outfoxing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kdna8")
+
+[node name="darkling" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lecio")
+
+[node name="destroyTheSun" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_uymb0")
+
+[connection signal="finished" from="iCanFeelItComing" to="." method="_on_i_can_feel_it_coming_finished"]
+[connection signal="finished" from="hotPursuit" to="." method="_on_hot_pursuit_finished"]
+[connection signal="finished" from="outfoxing" to="." method="_on_outfoxing_finished"]
+[connection signal="finished" from="darkling" to="." method="_on_darkling_finished"]
+[connection signal="finished" from="destroyTheSun" to="." method="_on_destroy_the_sun_finished"]

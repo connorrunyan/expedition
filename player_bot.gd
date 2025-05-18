@@ -10,6 +10,8 @@ const turn_speed = 1.0
 @onready var camera = $Camera2D
 @onready var left_gun = $LeftGun
 @onready var right_gun = $RightGun
+@onready var bullet_audio = $LeftGun/BulletAudio
+@onready var laser_audio = $RightGun/LaserAudio
 
 const PUSH_FORCE = 300.0
 const MIN_PUSH_FORCE = 250.0
@@ -140,12 +142,14 @@ func rotation_to_direction(rotation_radians: float) -> Vector2:
 
 # TODO speed of the player should prob be added to these?
 func fire_left():
+	bullet_audio.play()
 	var b = p_bullet.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	b.global_position = left_gun.global_position
 	b.dir = rotation_to_direction(left_gun.global_rotation+deg_to_rad(90.0))
 	get_tree().root.add_child(b)
 
 func fire_right():
+	laser_audio.play()
 	var b = p_laser.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	b.global_position = right_gun.global_position
 	b.dir = rotation_to_direction(right_gun.global_rotation-deg_to_rad(90.0))
