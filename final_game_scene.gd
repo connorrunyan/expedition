@@ -83,7 +83,8 @@ func _process(delta):
 		textureRect.color = color
 		fade += 1.0 * delta
 		if fade > 255.0:
-			# END GAME
+			get_tree().change_scene_to_file("res://TitleScreen.tscn")
+
 			pass
 
 func try_break_something():

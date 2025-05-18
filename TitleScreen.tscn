@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2plnxid3v76h"]
+[gd_scene load_steps=8 format=3 uid="uid://b2plnxid3v76h"]
 
 [ext_resource type="Script" uid="uid://dvqf8yecxk080" path="res://title_screen.gd" id="1_2k3je"]
 [ext_resource type="PackedScene" uid="uid://fake285l7wrm" path="res://sun.tscn" id="1_pkhjh"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://byh7a0qk056tp" path="res://assets/kenney/space shooter redux/Effects/star3.png" id="2_tu0on"]
 [ext_resource type="Material" uid="uid://bqaxkqw6ys3kt" path="res://assets/Stars.tres" id="3_2k3je"]
 [ext_resource type="Script" uid="uid://yv6tbfc2husd" path="res://Volume.gd" id="6_6iguo"]
-[ext_resource type="AudioStream" uid="uid://d2tvprynjch71" path="res://assets/audio/music/destroy the sun.ogg" id="7_g3l3g"]
 
 [sub_resource type="Theme" id="Theme_2k3je"]
 
@@ -105,22 +104,48 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_left = -574.0
 offset_top = -279.0
-offset_right = 54.0
+offset_right = -3.0
 offset_bottom = -33.0
 theme_override_font_sizes/font_size = 20
-text = "Wow Look at all of this lisceneing information wow it's so Cool. woow woow owwoo wowow wowo wowo ow owo wowowowoo"
+text = "Art:
+CCO - Kenney 
+Sci Fi RTS, Space Shooter Redux, Tiny Dungeon, Alien UFO PAck, Robot Pack, https://kenney.nl/assets
+
+Sounds:
+BFXR https://www.bfxr.net/"
 autowrap_mode = 2
 
 [node name="Credits2" type="Label" parent="Credits container"]
 layout_mode = 0
-offset_left = 62.0
-offset_top = -279.0
+offset_left = -1.0
+offset_top = -313.0
 offset_right = 575.0
-offset_bottom = 325.0
+offset_bottom = 321.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "Wow Look at all of this lisceneing information wow it's so Cool. woow woow owwoo wowow wowo wowo ow owo wowowowoowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww Oh my god i'm going to explode the sun i'm exploding it oh my god It is tim to do i'm i'm really gonna do it this time ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssWhether we wanted it or not, we've stepped into a war with the Cabal on Mars. So let's get to taking out their command, one by one. Valus Ta'aurc. From what I can gather he commands the Siege Dancers from an Imperial Land Tank outside of Rubicon. He's well protected, but with the right team, we can punch through those defenses, take this beast out, and break their grip on Freehold."
+text = "Music:
+\"I Can Feel it Coming\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+\"Hot Pursuit\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+\"Outfoxing the Fox\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+\"Aggressor\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+\"Darkling\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+\"Destroy The Sun\"  Connor"
 autowrap_mode = 3
 
 [node name="HSlider" type="HSlider" parent="."]
@@ -134,10 +159,6 @@ step = 0.01
 value = 0.5
 script = ExtResource("6_6iguo")
 bus_name = "Master"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_g3l3g")
-autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]

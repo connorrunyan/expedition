@@ -12,18 +12,23 @@ script = ExtResource("1_qsvpn")
 
 [node name="iCanFeelItComing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_wbw63")
+volume_db = -10.0
 
 [node name="hotPursuit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1c72l")
+volume_db = -10.0
 
 [node name="outfoxing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_kdna8")
+volume_db = -10.0
 
 [node name="darkling" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_lecio")
+volume_db = -10.0
 
 [node name="destroyTheSun" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_uymb0")
+volume_db = -10.0
 
 [connection signal="finished" from="iCanFeelItComing" to="." method="_on_i_can_feel_it_coming_finished"]
 [connection signal="finished" from="hotPursuit" to="." method="_on_hot_pursuit_finished"]
