@@ -35,14 +35,5 @@ position = Vector2(1.90735e-06, -1.19209e-07)
 scale = Vector2(1.80804, 1.81119)
 shape = SubResource("RectangleShape2D_2p3iq")
 
-[node name="HPLabel" type="Label" parent="."]
-offset_left = -221.0
-offset_top = -125.0
-offset_bottom = -6.0
-scale = Vector2(2, 2)
-text = "asdf"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [connection signal="timeout" from="WindupTimer" to="." method="_on_charge_timer_timeout"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

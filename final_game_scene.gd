@@ -23,6 +23,11 @@ var triggered_repair_9 = false
 var triggered_final_rush = false
 var triggered_last_ost = false
 
+var triggered_bonus_spawns_1 = false
+var triggered_bonus_spawns_2 = false
+var triggered_bonus_spawns_3 = false
+var triggered_bonus_spawns_4 = false
+
 var rng = RandomNumberGenerator.new()
 
 const e_SPIKE_STRIP = preload("res://EnemySpikeStrip.tscn")
@@ -78,6 +83,22 @@ func _process(delta):
 		var pu = intro_popup.instantiate()
 		canvas_layer.add_child(pu)
 	
+	if progress >= 10000 && triggered_final_rush && Stats.repairs_needed < 5 && !triggered_bonus_spawns_1:
+		triggered_bonus_spawns_1 = true
+		spawn_more_broken()
+	
+	if progress >= 10000 && triggered_final_rush && Stats.repairs_needed < 4 && !triggered_bonus_spawns_2:
+		triggered_bonus_spawns_2 = true
+		spawn_more_broken()
+		
+	if progress >= 10000 && triggered_final_rush && Stats.repairs_needed < 3 && !triggered_bonus_spawns_3:
+		triggered_bonus_spawns_3 = true
+		spawn_more_broken()
+		
+	if progress >= 10000 && triggered_final_rush && Stats.repairs_needed < 2 && !triggered_bonus_spawns_4:
+		triggered_bonus_spawns_4 = true
+		spawn_more_broken()
+	
 	if progress >= 10000 && triggered_final_rush && !triggered_last_ost && (Stats.repairs_needed <= 1):
 		triggered_last_ost = true
 		MusicMan.finale_started()
@@ -88,20 +109,22 @@ func _process(delta):
 		textureRect.color = color
 		fade += 0.1 * delta
 		if fade >= 1:
+			clear_enemies()
 			var pu = victory_popup.instantiate()
 			pu.go_title = true
 			canvas_layer.add_child(pu)
 	
 	if Stats.player_hp_current <= 0:
-		var color = Color.WHITE
+		var color = Color.RED
 		color.a = fade
 		textureRect.color = color
 		fade += 0.1 * delta
 		if fade >= 1:
+			clear_enemies()
 			var pu = death_popup.instantiate()
 			pu.go_title = true
 			canvas_layer.add_child(pu)
-			MusicMan._on_i_can_feel_it_coming_finished()
+			MusicMan.title()
 
 func Roll_Enemy(Pos: Vector2 ):
 	var e
@@ -125,6 +148,11 @@ func Roll_Enemy(Pos: Vector2 ):
 		get_node("/root").add_child(e)
 		
 
+func clear_enemies():
+	var en = get_tree().get_nodes_in_group("Enemy")
+	for e in en:
+		e.queue_free()
+
 func try_break_something():
 	var breakables = get_tree().get_nodes_in_group("RepairThings")
 	var broke_something = false
@@ -144,6 +172,15 @@ func try_break_something():
 				Roll_Enemy(breakable.position + (Vector2.LEFT * 50.0))
 			if Stats.progress_current >= 10000:
 				Roll_Enemy(breakable.position + (Vector2.RIGHT * 50.0))
+
+func spawn_more_broken():
+	var breakables = get_tree().get_nodes_in_group("RepairThings")
+	for breakable in breakables:
+		Roll_Enemy(breakable.position)
+		Roll_Enemy(breakable.position + (Vector2.UP * 50.0))
+		Roll_Enemy(breakable.position + (Vector2.DOWN * 50.0))
+		Roll_Enemy(breakable.position + (Vector2.LEFT * 50.0))
+		Roll_Enemy(breakable.position + (Vector2.RIGHT * 50.0))
 
 
 func try_break_everything():
