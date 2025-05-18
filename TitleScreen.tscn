@@ -21,9 +21,10 @@ script = null
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, -342)
-amount = 500
+amount = 200
 texture = ExtResource("2_tu0on")
 lifetime = 30.0
+preprocess = 30.0
 visibility_rect = Rect2(0, 0, 1800, 900)
 local_coords = true
 process_material = ExtResource("3_2k3je")
