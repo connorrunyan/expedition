@@ -60,3 +60,7 @@ var spike_Level_Up_Walk_Speed: float = 0.05
 var spike_Level_Up_Damage: float = 0.05
 #Shooty Stats
 var shooty_Level = 0
+var shooty_movement_speed: float = 100.0
+var shooty_Damage: float = 2
+var shooty_MaxHealth: float = 10
+var shooty_projectile_speed:float = 2000

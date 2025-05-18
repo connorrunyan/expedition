@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://btufm66m2uouo"]
+
+[ext_resource type="Script" uid="uid://cccwsij3xddgk" path="res://enemy_shooty.gd" id="1_rfh2k"]
+[ext_resource type="Texture2D" uid="uid://d0qygf2thncgq" path="res://assets/kenney/ufo/shipYellow.png" id="2_h13ek"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggpuv"]
+size = Vector2(128, 66.2947)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_rfh2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1, 0.995555)
+shape = SubResource("RectangleShape2D_ggpuv")
+
+[node name="Enemy Sprite" type="Sprite2D" parent="."]
+scale = Vector2(1.00551, 1)
+texture = ExtResource("2_h13ek")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 40.0
+path_max_distance = 50.0
+debug_enabled = true
+debug_path_custom_point_size = 20.0
+debug_path_custom_line_width = 5.0
+
+[node name="NavTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

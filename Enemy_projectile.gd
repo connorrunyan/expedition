@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var sprite = $Sprite2D
 var dir = Vector2.DOWN
+var speed = 2000.0
 
 var Projectile_Duration = 20.0
 var Projectile_Timer = 0.0
@@ -20,5 +21,5 @@ func _process(delta):
 		queue_free()
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("takeDamage"):
+	if body.has_method("take_damage") && body.is_in_group("Player"):
 		body.takeDamage(Stats.shooty_Damage)
