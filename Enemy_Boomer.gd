@@ -1,10 +1,9 @@
 extends Enemy
 
-enum State{ATTACK, KABOOM}
+enum State{ATTACK, WINDUP, KABOOM}
 
 var current_State: State = State.ATTACK
 
-@onready var explosion_timer = $ExplosionTimer
 @onready var explosion_duration = $ExplosionDuration
 @onready var explosion_sprite = $Explosion/ExplosionSprite
 @onready var explosion = $Explosion
@@ -12,20 +11,24 @@ var current_State: State = State.ATTACK
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var explosion_Hurtbox = $Explosion/ExplosionRadius
 
-@export var Explosion_Radius: float = 300
-
-#Level Up variables
-@export var Lvl_Up_Radius_Increase: float = 0.05
+@onready var explode_Health: float = Stats.explode_MaxHealth
 
 var target_color:Color = Color(1,0,0,1)
+
+var explode_timer = 0.0
+var explode_wind_up = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_on_nav_timer_timeout()
-	var New_Explosion = CircleShape2D.new()
-	New_Explosion.radius = Explosion_Radius #The size that you want
-	explosion_Hurtbox.shape = New_Explosion
-	explosion_sprite.scale = Vector2(explosion_sprite.scale.x * Explosion_Radius*(1 + Level_Up_Walk_Speed*(Level-1))/Explosion_Radius, explosion_sprite.scale.y * Explosion_Radius*(1 + Level_Up_Walk_Speed*(Level-1))/Explosion_Radius)
+	
+	Level = Stats.total_Level + Stats.explode_Level
+	
+	explosion_sprite.scale = Vector2(explosion_sprite.scale.x * Stats.explode_Radius*(1 + Stats.explode_Level_Up_Radius_Increase*(Level-1))/Stats.explode_Radius, explosion_sprite.scale.y * Stats.explode_Radius*(1 + Stats.explode_Level_Up_Radius_Increase*(Level-1))/Stats.explode_Radius)
+
+
+	
+	#explosion_timer.wait_time = Stats.explode_Timer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -33,7 +36,9 @@ func _physics_process(delta):
 		Die()
 	if current_State == State.ATTACK:
 		Navigate(player.global_position)
-	elif current_State == State.KABOOM:
+		if position.distance_to(player.position) <= Stats.explode_detection_radius * (1 + Stats.explode_Level_Up_Radius_Increase*(Level-1)):
+			Die()
+	elif current_State == State.WINDUP:
 		Explode(delta)
 	move_and_slide()
 
@@ -45,41 +50,39 @@ func Navigate(Point):
 	direction = direction.normalized()
 	
 	velocity = direction * movement_speed
-	velocity *= (1 + Level_Up_Walk_Speed*(Level-1))
+	velocity *= (1 + Stats.explode_Level_Up_Walk_Speed*(Level-1))
 
 func Die():
-	current_State = State.KABOOM
-	explosion_timer.start()
+	current_State = State.WINDUP
 	var t: Tween = create_tween()
-	t.tween_property(self, "modulate", Color.RED, explosion_timer.wait_time * 0.9)
+	t.tween_property(self, "modulate", Color.RED, Stats.explode_Timer * 0.9)
 	velocity = Vector2(0,0)
 	
 	
 func Explode(delta):
 	#modulate = lerp(modulate, target_color, delta*10)
 	velocity = lerp(velocity, Vector2(0,0), 0.01)
+	explode_wind_up += delta
+	if explode_wind_up >= Stats.explode_Timer:
+		Kaboom()
 	
 func _Player_Entered_Radius(area):
-	print("Player entered Radius")
 	Die()
 
-
-func _on_explosion_timer_timeout():
+func Kaboom():
 	explosion_duration.start()
 	explosion_sprite.visible = true
 	explosion.monitoring = true
+	current_State = State.KABOOM
 	#This is where we'd put some an animation for the sprite.
 
-
+#TODO: Put the Damage Value in here
 func Player_Hit(body):
 	if body.has_method("take_damage"):
-		print("HOW COULD YOU")
 		body.take_damage(Damage)
-
 
 func _on_explosion_duration_timeout():
 	queue_free()
-
 
 func _on_nav_timer_timeout():
 	navigation_agent_2d.set_target_position(player.global_position)

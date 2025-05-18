@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://pvgxulc2018c"]
+[gd_scene load_steps=11 format=3 uid="uid://pvgxulc2018c"]
 
 [ext_resource type="PackedScene" uid="uid://dpvcitogmyuco" path="res://ui.tscn" id="1_6dqfw"]
 [ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://assets/icon.svg" id="2_bc64o"]
 [ext_resource type="PackedScene" uid="uid://crmhr01w6rifg" path="res://player_bot.tscn" id="3_3efis"]
-[ext_resource type="PackedScene" uid="uid://b0gu53xmeo8hp" path="res://EnemyBasal.tscn" id="4_bc64o"]
+[ext_resource type="PackedScene" uid="uid://b0gu53xmeo8hp" path="res://EnemyExploder.tscn" id="4_bc64o"]
 [ext_resource type="PackedScene" uid="uid://csrbq0n68odwo" path="res://EnemyCharger.tscn" id="5_3efis"]
 [ext_resource type="Texture2D" uid="uid://ik4epbgswp51" path="res://assets/kenney/spaceBuilding_017.png" id="6_nvjax"]
+[ext_resource type="PackedScene" uid="uid://tqpelmgcbx74" path="res://EnemySpikeStrip.tscn" id="8_klvis"]
+[ext_resource type="PackedScene" uid="uid://btufm66m2uouo" path="res://EnemyShooty.tscn" id="8_vy4eb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvjax"]
 size = Vector2(87.1613, 88.0645)
@@ -69,13 +71,12 @@ texture = ExtResource("2_bc64o")
 [node name="PlayerBot" parent="." instance=ExtResource("3_3efis")]
 position = Vector2(-206, 0)
 
-[node name="Enemy" parent="." instance=ExtResource("4_bc64o")]
+[node name="EnemyKaboom" parent="." instance=ExtResource("4_bc64o")]
 position = Vector2(915, 417)
 Level = 10.0
 
 [node name="EnemyCharger" parent="." instance=ExtResource("5_3efis")]
-position = Vector2(-790, 538)
-Level_Up_Charge_Speed = 0.2
+position = Vector2(-1575, 1762)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["NavMesh"]]
 navigation_polygon = SubResource("NavigationPolygon_3efis")
@@ -85,3 +86,9 @@ position = Vector2(0, 2.52551)
 scale = Vector2(1, 0.987245)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(151, -196.026, 146, -141.328, 143, 211.168, 166, 250.672, 210, 268.904, 565, 267.891, 601, 251.685, 625, 214.207, 630, -153.483, 609, -203.116, 552, -225.401, 207, -226.413)
+
+[node name="EnemyCharger2" parent="." instance=ExtResource("8_klvis")]
+position = Vector2(-1442, 482)
+
+[node name="Enemy2" parent="." instance=ExtResource("8_vy4eb")]
+position = Vector2(-291, -530)

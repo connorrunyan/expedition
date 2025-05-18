@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://tqpelmgcbx74"]
+
+[ext_resource type="Script" uid="uid://c7b4oafkqg5gk" path="res://enemy_spike_strip.gd" id="1_er4bk"]
+[ext_resource type="Texture2D" uid="uid://b11yrgod5oahx" path="res://assets/kenney/ufo/shipBlue.png" id="2_er4bk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_er4bk"]
+size = Vector2(121, 87.3884)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2p3iq"]
+size = Vector2(121, 87.3884)
+
+[node name="EnemySpikeStrip" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_er4bk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.499998)
+scale = Vector2(1.8063, 1.79325)
+shape = SubResource("RectangleShape2D_er4bk")
+
+[node name="Enemy Sprite" type="Sprite2D" parent="."]
+scale = Vector2(1.746, 1.7374)
+texture = ExtResource("2_er4bk")
+
+[node name="WindupTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="Hurtbox Shape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1.90735e-06, -1.19209e-07)
+scale = Vector2(1.80804, 1.81119)
+shape = SubResource("RectangleShape2D_2p3iq")
+
+[connection signal="timeout" from="WindupTimer" to="." method="_on_charge_timer_timeout"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
