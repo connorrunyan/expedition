@@ -3,6 +3,9 @@ extends Node2D
 var intro_popup = preload("res://IntroPopup.tscn")
 var repair_popup = preload("res://RepairPopup.tscn")
 var final_popup = preload("res://EndgamePopup.tscn")
+var death_popup = preload("res://DeathPopup.tscn")
+var victory_popup = preload("res://VictoryPopup.tscn")
+
 @onready var canvas_layer = $CanvasLayer
 @onready var textureRect = $CanvasLayer/TextureRect
 var fade = 0
@@ -28,7 +31,6 @@ const e_CHARGER = preload("res://EnemyCharger.tscn")
 const e_SHOOTY = preload("res://EnemyShooty.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	MusicMan._on_i_can_feel_it_coming_finished()
 	rng.randomize()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -85,11 +87,22 @@ func _process(delta):
 		var color = Color.WHITE
 		color.a = fade
 		textureRect.color = color
-		fade += 1.0 * delta
-		if fade > 255.0:
-			get_tree().change_scene_to_file("res://TitleScreen.tscn")
-
-			pass
+		fade += 0.1 * delta
+		if fade >= 1:
+			var pu = victory_popup.instantiate()
+			pu.go_title = true
+			canvas_layer.add_child(pu)
+	
+	if Stats.player_hp_current <= 0:
+		var color = Color.WHITE
+		color.a = fade
+		textureRect.color = color
+		fade += 0.1 * delta
+		if fade >= 1:
+			var pu = death_popup.instantiate()
+			pu.go_title = true
+			canvas_layer.add_child(pu)
+			MusicMan._on_i_can_feel_it_coming_finished()
 
 func Roll_Enemy(Pos: Vector2 ):
 	var e

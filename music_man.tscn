@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cd1oykxvm0n1" path="res://assets/audio/incomptech/Darkling.mp3" id="5_lecio"]
 
 [node name="MusicMan" type="Node"]
+process_mode = 4
 script = ExtResource("1_qsvpn")
 
 [node name="iCanFeelItComing" type="AudioStreamPlayer" parent="."]
