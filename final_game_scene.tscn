@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqxyfkcwixshc"]
+[gd_scene load_steps=7 format=3 uid="uid://dxq04nc8gi0ty"]
 
 [ext_resource type="Script" uid="uid://cbromv3k2v7jg" path="res://final_game_scene.gd" id="1_e71gk"]
 [ext_resource type="PackedScene" uid="uid://fake285l7wrm" path="res://sun.tscn" id="1_k7jnd"]
 [ext_resource type="PackedScene" uid="uid://bce1lpbpk7x84" path="res://station.tscn" id="2_e71gk"]
 [ext_resource type="PackedScene" uid="uid://crmhr01w6rifg" path="res://player_bot.tscn" id="3_c7l1c"]
-[ext_resource type="PackedScene" uid="uid://ytg5oq42ni4b" path="res://repair_thing.tscn" id="5_c7l1c"]
+[ext_resource type="PackedScene" uid="uid://bulyop546j4q7" path="res://repair_thing.tscn" id="5_c7l1c"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_c7l1c"]
+vertices = PackedVector2Array(3844.11, 346.828, 3197.92, 1525.15, 2677.08, 1015.98, 2670.92, 215.977, 3098.74, -394.852, 395.938, 1539.03, 970.922, 1020.02, 3839.2, -722.313, 3103.8, -407.172, 2073.38, -2487.16, 388.117, -376.938, 977.078, 220.023, 1788.69, -1724.27, -1363.72, -2482.24, 355.969, -1724.27, -319.539, -1742.04, -5329.74, -799.813, -5327.81, -1477.55, -1853.75, -1453.92, -2526.65, -796.852, -2545.69, 807.773, -1833.95, -380.859, -1859.18, 351.117, -5353.52, 1532.12, -5353.52, 802.813, -1823.54, 1559.68, -368.133, 372.188, -326.57, -394.898, 384.063, 2377.3, -359.219, 2377.3, -1358.9, -1746.98)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(2, 1, 5, 6), PackedInt32Array(7, 0, 8, 9), PackedInt32Array(4, 8, 0), PackedInt32Array(10, 4, 3, 11), PackedInt32Array(9, 8, 12), PackedInt32Array(13, 9, 12, 14, 15), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 19, 18, 21, 22), PackedInt32Array(23, 24, 20, 25), PackedInt32Array(22, 25, 20), PackedInt32Array(26, 22, 21, 27, 10, 11), PackedInt32Array(28, 29, 26, 5), PackedInt32Array(6, 5, 26, 11), PackedInt32Array(14, 10, 27, 15), PackedInt32Array(13, 15, 30)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-5363.52, 792.8, -5363.52, 1542.05, -1813.25, 1569.76, -1848.88, 361.263, -378.089, 382.048, -369.182, 2387.31, 393.926, 2387.31, 405.803, 1548.98, 3203.86, 1535.12, 3854.14, 349.386, 3849.19, -726.486, 2077.51, -2497.17, -1373.79, -2492.22, -1368.84, -1737.03, -329.591, -1732.08, -336.519, -404.813, -1824.13, -390.956, -1843.93, -1463.86, -5337.79, -1487.61, -5339.77, -789.831, -2536.76, -786.861, -2555.57, 797.749)])
 
 [node name="FinalGameScene" type="Node2D"]
 script = ExtResource("1_e71gk")
@@ -48,3 +53,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+scale = Vector2(1.01034, 1.01034)
+navigation_polygon = SubResource("NavigationPolygon_c7l1c")
+
+[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(987, 230, 981, 1010, 2667, 1006, 2661, 226)
+
+[node name="Polygon2D2" type="Polygon2D" parent="NavigationRegion2D"]
+position = Vector2(-536.451, -1896.39)
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(902.664, 182.116, 934.336, 1509.39, 3628.47, 1491.57, 2320.99, 182.116)

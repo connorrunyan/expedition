@@ -22,6 +22,10 @@ var triggered_last_ost = false
 
 var rng = RandomNumberGenerator.new()
 
+const e_SPIKE_STRIP = preload("res://EnemySpikeStrip.tscn")
+const e_EXPLODER = preload("res://EnemyExploder.tscn")
+const e_CHARGER = preload("res://EnemyCharger.tscn")
+const e_SHOOTY = preload("res://EnemyShooty.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	MusicMan._on_i_can_feel_it_coming_finished()
@@ -87,6 +91,28 @@ func _process(delta):
 
 			pass
 
+func Roll_Enemy(Pos: Vector2 ):
+	var e
+	var Chance =  rng.randi_range(1, 100)
+	
+	if Chance <= 25:
+		e = e_EXPLODER.instantiate()
+		e.position = Pos
+		get_node("/root").add_child(e)
+	elif Chance <= 50:
+		e = e_SHOOTY.instantiate()
+		e.position = Pos
+		get_node("/root").add_child(e)
+	elif Chance <= 80:
+		e = e_CHARGER.instantiate()
+		e.position = Pos
+		get_node("/root").add_child(e)
+	elif Chance <= 100:
+		e = e_SPIKE_STRIP.instantiate()
+		e.position = Pos
+		get_node("/root").add_child(e)
+		
+
 func try_break_something():
 	var breakables = get_tree().get_nodes_in_group("RepairThings")
 	var broke_something = false
@@ -97,6 +123,7 @@ func try_break_something():
 		if !breakable.is_broken:
 			breakable.break_down()
 			broke_something = true
+			Roll_Enemy(breakable.position)
 
 
 func try_break_everything():

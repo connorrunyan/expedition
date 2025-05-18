@@ -78,6 +78,7 @@ func Player_Hit(body):
 		body.take_damage(Damage)
 
 func _on_explosion_duration_timeout():
+	drop_Chance()
 	queue_free()
 
 func _on_nav_timer_timeout():

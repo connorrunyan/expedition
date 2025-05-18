@@ -82,8 +82,6 @@ func Init_charge():
 	WindupTimer.start()
 	spike_drop_Timer = 0.0
 	
-func Die():
-	queue_free()
 
 #TODO: Put the Damage Value in here, maybe increase it when the goober is charging
 func Player_Hit(body):
