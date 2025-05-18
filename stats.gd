@@ -36,12 +36,27 @@ var charge_WindUpTime = 2.0
 var charge_chargeVelocity: float = 1000
 var charge_ChargeDistance: float = 800
 
-#Level up variables
 var charge_Level_Up_Charge_Speed: float = 0.05
 var charge_Level_Up_Charge_Distance: float = 0.05
 var charge_Level_Up_Walk_Speed: float = 0.05
 var charge_Level_Up_Damage: float = 0.05
 #SpikeStrip Stats
 var spike_Level = 0
+var spike_movement_speed: float = 100.0
+var spike_Damage: float = 2
+var spike_MaxHealth: float = 10
+var spike_WindUpTime = 2.0
+var spike_chargeVelocity: float = 1000
+var spike_ChargeDistance: float = 800
+var spike_drop_duration = 0.1
+
+var spike_Spike_Duration = 5
+var spike_Spike_Damage = 2
+
+
+var spike_Level_Up_Charge_Speed: float = 0.05
+var spike_Level_Up_Charge_Distance: float = 0.05
+var spike_Level_Up_Walk_Speed: float = 0.05
+var spike_Level_Up_Damage: float = 0.05
 #Shooty Stats
 var shooty_Level = 0

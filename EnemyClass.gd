@@ -25,7 +25,3 @@ func move_to_point(point: Vector2):
 	
 	velocity = direction * movement_speed
 	#velocity *= (1 + Level_Up_Walk_Speed*(Level-1))
-
-# Called when the node enters the scene tree for the first time.
-func _physics_process(delta):
-	pass

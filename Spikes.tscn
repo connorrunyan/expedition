@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqlt5aef2yvhv"]
+
+[ext_resource type="Texture2D" uid="uid://ce8dhh60cfm65" path="res://assets/kenney/ufo/laserBeige_burst.png" id="1_3gfof"]
+[ext_resource type="Script" uid="uid://baoqs3erqpnp5" path="res://spike.gd" id="1_gwck6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwck6"]
+radius = 64.0
+
+[node name="Spike" type="Node2D"]
+script = ExtResource("1_gwck6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.593522, 0.593522)
+texture = ExtResource("1_3gfof")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gwck6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_spike_Stepped"]
