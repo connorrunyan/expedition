@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0gu53xmeo8hp"]
+[gd_scene load_steps=6 format=3 uid="uid://ctcc1xykyq00a"]
 
 [ext_resource type="Script" uid="uid://bguix6f7qhrc" path="res://Enemy_Boomer.gd" id="1_v5xp5"]
 [ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://assets/icon.svg" id="2_2ty3q"]

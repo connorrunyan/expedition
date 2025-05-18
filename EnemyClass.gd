@@ -9,6 +9,7 @@ class_name Enemy
 @export var Health: float = MaxHealth
 @export var Level: float = 1
 
+const UPGRADE = preload("res://upgrade.tscn")
 #TODO: Think about what stuff every enemy needs.
 #TODO: Write a pathfinding function.
 #TODO: Extend this into the little explody guy
@@ -19,6 +20,10 @@ func takeDamage(damage: float):
 func die():
 	queue_free()
 
+func drop_Loot():
+	var u = UPGRADE.instantiate()
+	u.position = position
+	get_node("/root").add_child(u)
 
 func move_to_point(point: Vector2):
 	var direction = global_position.direction_to(point)

@@ -1,0 +1,24 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://bqaxkqw6ys3kt"]
+
+[sub_resource type="Curve" id="Curve_qumfl"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.04494), 0.0, 0.0, 0, 0, Vector2(1, 3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r08cw"]
+curve = SubResource("Curve_qumfl")
+
+[resource]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(900, 10, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_over_velocity_min = 5.0
+scale_over_velocity_max = 50.0
+scale_over_velocity_curve = SubResource("CurveTexture_r08cw")

@@ -1,0 +1,144 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2plnxid3v76h"]
+
+[ext_resource type="Script" uid="uid://dvqf8yecxk080" path="res://title_screen.gd" id="1_2k3je"]
+[ext_resource type="PackedScene" uid="uid://fake285l7wrm" path="res://sun.tscn" id="1_pkhjh"]
+[ext_resource type="Theme" uid="uid://u6g41nadph1q" path="res://Moon.tres" id="2_1xr1c"]
+[ext_resource type="Texture2D" uid="uid://byh7a0qk056tp" path="res://assets/kenney/space shooter redux/Effects/star3.png" id="2_tu0on"]
+[ext_resource type="Material" uid="uid://bqaxkqw6ys3kt" path="res://assets/Stars.tres" id="3_2k3je"]
+[ext_resource type="Script" uid="uid://yv6tbfc2husd" path="res://Volume.gd" id="6_6iguo"]
+[ext_resource type="AudioStream" uid="uid://d2tvprynjch71" path="res://assets/audio/music/destroy the sun.ogg" id="7_g3l3g"]
+
+[sub_resource type="Theme" id="Theme_2k3je"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+theme = ExtResource("2_1xr1c")
+script = ExtResource("1_2k3je")
+
+[node name="Sun" parent="." instance=ExtResource("1_pkhjh")]
+position = Vector2(369, 105)
+scale = Vector2(0.629057, 0.629057)
+script = null
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -342)
+amount = 200
+texture = ExtResource("2_tu0on")
+lifetime = 30.0
+preprocess = 30.0
+visibility_rect = Rect2(0, 0, 1800, 900)
+local_coords = true
+process_material = ExtResource("3_2k3je")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = -4.0
+offset_right = -14.0
+offset_bottom = 321.985
+grow_vertical = 0
+theme = ExtResource("2_1xr1c")
+theme_override_constants/separation = 45
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Begin"
+expand_icon = true
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Credits"
+expand_icon = true
+
+[node name="End" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit"
+expand_icon = true
+
+[node name="Who Did It" type="Label" parent="."]
+layout_mode = 0
+offset_left = -575.0
+offset_top = -321.0
+offset_right = -246.0
+offset_bottom = -296.0
+theme = SubResource("Theme_2k3je")
+text = "A Game By: DEUWA, Connor"
+
+[node name="Audio Option" type="Label" parent="."]
+layout_mode = 0
+offset_left = -551.0
+offset_top = 194.0
+offset_right = -222.0
+offset_bottom = 223.0
+theme = SubResource("Theme_2k3je")
+theme_override_font_sizes/font_size = 28
+text = "Master Volume:"
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = -574.0
+offset_top = -279.0
+offset_right = 911.0
+offset_bottom = -33.0
+theme_override_font_sizes/font_size = 80
+text = "Expedition to 
+the Centre 
+of the Sun."
+
+[node name="Credits container" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Credits" type="Label" parent="Credits container"]
+layout_mode = 0
+offset_left = -574.0
+offset_top = -279.0
+offset_right = 54.0
+offset_bottom = -33.0
+theme_override_font_sizes/font_size = 20
+text = "Wow Look at all of this lisceneing information wow it's so Cool. woow woow owwoo wowow wowo wowo ow owo wowowowoo"
+autowrap_mode = 2
+
+[node name="Credits2" type="Label" parent="Credits container"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = -279.0
+offset_right = 575.0
+offset_bottom = 325.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Wow Look at all of this lisceneing information wow it's so Cool. woow woow owwoo wowow wowo wowo ow owo wowowowoowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww Oh my god i'm going to explode the sun i'm exploding it oh my god It is tim to do i'm i'm really gonna do it this time ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssWhether we wanted it or not, we've stepped into a war with the Cabal on Mars. So let's get to taking out their command, one by one. Valus Ta'aurc. From what I can gather he commands the Siege Dancers from an Imperial Land Tank outside of Rubicon. He's well protected, but with the right team, we can punch through those defenses, take this beast out, and break their grip on Freehold."
+autowrap_mode = 3
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = -327.0
+offset_top = 202.0
+offset_right = -15.0
+offset_bottom = 218.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+script = ExtResource("6_6iguo")
+bus_name = "Master"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_g3l3g")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/End" to="." method="_on_end_pressed"]
