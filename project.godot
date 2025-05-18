@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Expedition"
-run/main_scene="uid://ehjfqeb7nw0"
+run/main_scene="uid://cqxyfkcwixshc"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
 Stats="*res://stats.gd"
+MusicMan="*res://music_man.tscn"
 
 [dotnet]
 

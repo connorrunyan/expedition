@@ -1,5 +1,13 @@
 extends Node
 
+#progress stats
+var progress_current = 0
+var progress_normal_rate = 250 # per sec out of 10000
+var progress_blocked_rate = 1 # per sec out of 10000
+var repairs_needed = 0
+var repair_rate = 10.0
+var repair_distance = 1000.0
+
 #Player Stats
 var player_hp_current = 100.0
 var player_hp_max = 100.0

@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdd7d01scwabx"]
+
+[ext_resource type="Script" uid="uid://bny3gfq4yaqh7" path="res://repair_popup.gd" id="1_l5uid"]
+[ext_resource type="Texture2D" uid="uid://3kvif5bs5wx5" path="res://assets/kenney/sci fi rts/Structure/scifiStructure_16.png" id="2_lk2ev"]
+[ext_resource type="Texture2D" uid="uid://wj7fhx78of3j" path="res://assets/kenney/sci fi rts/Structure/scifiStructure_01.png" id="3_lls40"]
+
+[node name="EndgamePopup" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l5uid")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Message From Command:
+
+They're sending everything they have!  
+
+They know we're on the edge of greatness, and the closed-minded United Earth Defence Force will do anything to suppress our ideas.  Fix what they've broken and do what we came here to do.  
+DESTROY THE SUN"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("2_lk2ev")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "-->"
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("3_lls40")
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "I'm ready to finish this, Mr. Radio Man"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
