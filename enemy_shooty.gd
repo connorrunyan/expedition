@@ -24,7 +24,7 @@ func _physics_process(delta):
 	
 	shootTimer += delta
 	
-	if shootTimer >= shootTimerDuration && position.distance_to(player.position) <= Stats.shooty_Max_Range:
+	if shootTimer >= shootTimerDuration && global_position.distance_to(player.global_position) <= Stats.shooty_Max_Range:
 		shoot()
 
 	move_and_slide()

@@ -45,7 +45,6 @@ func _process(delta):
 		triggered_repair_1 = true
 		try_break_something()
 		MusicMan.game_started()
-		await get_tree().process_frame
 		var pu = repair_popup.instantiate()
 		canvas_layer.add_child(pu)
 	if progress >= 2000 && !triggered_repair_2:
@@ -137,6 +136,14 @@ func try_break_something():
 			breakable.break_down()
 			broke_something = true
 			Roll_Enemy(breakable.position)
+			if Stats.progress_current >= 2500:
+				Roll_Enemy(breakable.position + (Vector2.UP * 50.0))
+			if Stats.progress_current >= 5000:
+				Roll_Enemy(breakable.position + (Vector2.DOWN * 50.0))
+			if Stats.progress_current >= 7500:
+				Roll_Enemy(breakable.position + (Vector2.LEFT * 50.0))
+			if Stats.progress_current >= 10000:
+				Roll_Enemy(breakable.position + (Vector2.RIGHT * 50.0))
 
 
 func try_break_everything():
@@ -146,3 +153,10 @@ func try_break_everything():
 		var breakable = breakables[i]
 		if !breakable.is_broken:
 			breakable.break_down()
+
+
+func _on_background_spawns_timer_timeout():
+	print("spawn")
+	var p = $PlayerBot.global_position
+	var offset = Vector2(rng.randf(), rng.randf()).normalized()
+	Roll_Enemy(p + (offset * 3000))

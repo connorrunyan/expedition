@@ -75,4 +75,4 @@ var shooty_movement_speed: float = 100.0
 var shooty_Damage: float = 2
 var shooty_MaxHealth: float = 10
 var shooty_projectile_speed:float = 2000
-var shooty_Max_Range: float = 4000
+var shooty_Max_Range: float = 3000

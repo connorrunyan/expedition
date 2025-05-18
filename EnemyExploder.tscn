@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ctcc1xykyq00a"]
 
 [ext_resource type="Script" uid="uid://bguix6f7qhrc" path="res://Enemy_Boomer.gd" id="1_v5xp5"]
-[ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://assets/icon.svg" id="2_2ty3q"]
+[ext_resource type="Texture2D" uid="uid://1ko7sgobbps7" path="res://assets/kenney/ufo/shipPink_damage.png" id="2_3lgjy"]
 [ext_resource type="Texture2D" uid="uid://bmiyhoclflwra" path="res://assets/Circle-0001.png" id="3_2ty3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggpuv"]
@@ -12,7 +12,7 @@ radius = 300.0
 
 [node name="EnemyKaboom" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 3
 script = ExtResource("1_v5xp5")
 movement_speed = 150.0
 
@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_ggpuv")
 
 [node name="Enemy Sprite" type="Sprite2D" parent="."]
 rotation = -0.783591
-texture = ExtResource("2_2ty3q")
+texture = ExtResource("2_3lgjy")
 
 [node name="ExplosionDuration" type="Timer" parent="."]
 wait_time = 0.2

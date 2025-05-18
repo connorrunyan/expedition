@@ -20,5 +20,5 @@ func _process(delta):
 		queue_free()
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("takeDamage"):
-		body.takeDamage(Stats.shooty_Damage)
+	if body.has_method("take_damage"):
+		body.take_damage(Stats.player_bullet_damage)

@@ -1,12 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://crmhr01w6rifg"]
+[gd_scene load_steps=17 format=3 uid="uid://crmhr01w6rifg"]
 
 [ext_resource type="Script" uid="uid://bpkoa2linxyxe" path="res://player_bot.gd" id="1_j44ee"]
 [ext_resource type="Texture2D" uid="uid://bb3wtji4yt0gw" path="res://tread_atlas_texture.tres" id="2_tdgst"]
 [ext_resource type="Texture2D" uid="uid://bsaraudskt3f8" path="res://assets/kenney/body_3Dyellow.png" id="3_sle0f"]
 [ext_resource type="AudioStream" uid="uid://bgrycvssi26r1" path="res://assets/audio/bfxr/Shoot35.wav" id="4_n4koy"]
 [ext_resource type="Texture2D" uid="uid://cqg07ok00rqxm" path="res://assets/gun1.png" id="4_sle0f"]
-[ext_resource type="Texture2D" uid="uid://cdlov0c1sqgyq" path="res://assets/gun2.png" id="5_8ykbp"]
-[ext_resource type="AudioStream" uid="uid://on06mqfjxc0y" path="res://assets/audio/bfxr/Shoot6.wav" id="6_7kp10"]
 [ext_resource type="PackedScene" uid="uid://ur3a506lypfy" path="res://stats_ui.tscn" id="6_8ykbp"]
 [ext_resource type="PackedScene" uid="uid://coxje4ng773t5" path="res://progress_ui.tscn" id="9_7kp10"]
 
@@ -177,12 +175,11 @@ position = Vector2(0, -60)
 
 [node name="RightGunSprite" type="Sprite2D" parent="RightGun"]
 position = Vector2(0, -15)
-texture = ExtResource("5_8ykbp")
+texture = ExtResource("4_sle0f")
 
 [node name="LaserAudio" type="AudioStreamPlayer2D" parent="RightGun"]
 position = Vector2(0, 60)
-stream = ExtResource("6_7kp10")
-volume_db = -10.0
+stream = ExtResource("4_n4koy")
 
 [node name="Body" type="Sprite2D" parent="."]
 rotation = 3.14159

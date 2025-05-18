@@ -66,3 +66,9 @@ polygon = PackedVector2Array(987, 230, 981, 1010, 2667, 1006, 2661, 226)
 position = Vector2(-536.451, -1896.39)
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(902.664, 182.116, 934.336, 1509.39, 3628.47, 1491.57, 2320.99, 182.116)
+
+[node name="BackgroundSpawnsTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="BackgroundSpawnsTimer" to="." method="_on_background_spawns_timer_timeout"]

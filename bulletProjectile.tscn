@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cyryoytujok05" path="res://assets/kenney/space shooter redux/Lasers/laserYeller08.png" id="2_3ugb7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ugb7"]
-radius = 23.7121
+radius = 47.4667
 
 [node name="Projectile" type="Node2D"]
 script = ExtResource("1_3ugb7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("2_3ugb7")
 
 [node name="Area2D" type="Area2D" parent="."]

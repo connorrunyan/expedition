@@ -116,11 +116,12 @@ func _process(delta):
 		var v = Vector2(maxf(z, 0.25),maxf(z, 0.25))
 		camera.zoom = v
 	
-	if Input.is_action_just_pressed("fire_left"):
-		fire_left()
+	#if Input.is_action_just_pressed("fire_left"):
+	#	fire_left()
 	
 	if Input.is_action_just_pressed("fire_right"):
 		fire_right()
+		fire_left()
 
 func _input(event):
 	pass
@@ -153,11 +154,11 @@ func fire_left():
 
 func fire_right():
 	laser_audio.play()
-	var b = p_laser.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	var b = p_bullet.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	b.global_position = right_gun.global_position
 	b.dir = rotation_to_direction(right_gun.global_rotation-deg_to_rad(90.0))
 	get_tree().root.add_child(b)
 
 func take_damage(damage: float):
-	Stats.player_hp_current = Stats.player_hp_current
-	player_label.text = "hp: " + str(Stats.player_hp_current)
+	Stats.player_hp_current = Stats.player_hp_current - damage
+	player_label.text = "hp:\n" + str(Stats.player_hp_current)

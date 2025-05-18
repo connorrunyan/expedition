@@ -16,7 +16,7 @@ const UPGRADE = preload("res://upgrade.tscn")
 #TODO: Write a pathfinding function.
 #TODO: Extend this into the little explody guy
 
-func takeDamage(damage: float):
+func take_damage(damage: float):
 	Health = Health - Damage
 
 func Die():
