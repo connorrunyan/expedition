@@ -75,7 +75,6 @@ Level = 10.0
 
 [node name="EnemyCharger" parent="." instance=ExtResource("5_3efis")]
 position = Vector2(-790, 538)
-Level_Up_Charge_Speed = 0.2
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["NavMesh"]]
 navigation_polygon = SubResource("NavigationPolygon_3efis")

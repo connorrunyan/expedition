@@ -12,16 +12,8 @@ var chargePosition: Vector2
 
 @onready var enemy_sprite = $"Enemy Sprite"
 
-@export var WindUpTime = 2.0
-
-@export var chargeVelocity: float = 1000
-@export var ChargeDistance: float = 800
-var distance_Travelled: Vector2 = Vector2(0, 0)
-
-#Level up variables
-@export var Level_Up_Charge_Speed: float = 0.05
-@export var Level_Up_Charge_Distance: float = 0.05
-
+var charge_Direction:Vector2 = Vector2(0,0)
+var distance_Travelled:Vector2 = Vector2(0,0)
 
 @export var sprite: Node2D
 @export var shake_amount: = 10.0
@@ -30,8 +22,9 @@ var distance_Travelled: Vector2 = Vector2(0, 0)
 var current_shake: float = 10.0
 
 func _ready():
-	WindupTimer.wait_time = WindUpTime
-	ChargeDistance = ChargeDistance * (1 + Level_Up_Charge_Distance*(Level-1)) 
+	WindupTimer.wait_time = Stats.charge_WindUpTime
+	Level = Stats.total_Level + Stats.charge_Level 
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -41,7 +34,7 @@ func _physics_process(delta):
 	match current_State:
 		State.WALK:
 			move_to_point(player.global_position)
-			if position.distance_to(player.position) <= ChargeDistance:
+			if position.distance_to(player.position) <= Stats.charge_ChargeDistance * (1 + Stats.charge_Level_Up_Charge_Distance*(Level-1)):
 				Init_Charge()
 		State.WINDUP:
 			windUp(delta)
@@ -58,13 +51,13 @@ func windUp(delta):
 	enemy_sprite.position = Vector2(randf_range(-current_shake, current_shake), randf_range(-current_shake, current_shake))
 	
 func charge(delta):
-	velocity = chargeDirection * chargeVelocity
+	velocity = chargeDirection * Stats.charge_chargeVelocity
 	
-	velocity *= (1 + Level_Up_Charge_Speed*(Level-1))
+	velocity *= (1 + Stats.charge_Level_Up_Charge_Speed*(Level-1))
 	
 	distance_Travelled += velocity * delta
 	
-	if distance_Travelled.length() > ChargeDistance * 2.1:
+	if distance_Travelled.length() > Stats.charge_ChargeDistance * (1 + Stats.charge_Level_Up_Charge_Distance*(Level-1)) * 2.1:
 		current_State = State.WALK
 		distance_Travelled = Vector2.ZERO
 		
@@ -79,6 +72,7 @@ func Init_Charge():
 func Die():
 	queue_free()
 
+#TODO: Put the Damage Value in here, maybe increase it when the goober is charging
 func Player_Hit(body):
 	if body.has_method("take_damage"):
 		body.take_damage(Damage)

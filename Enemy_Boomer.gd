@@ -12,10 +12,9 @@ var current_State: State = State.ATTACK
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var explosion_Hurtbox = $Explosion/ExplosionRadius
 
-@export var Explosion_Radius: float = 300
+@onready var explode_Health: float = Stats.explode_MaxHealth
 
-#Level Up variables
-@export var Lvl_Up_Radius_Increase: float = 0.05
+@export var Explosion_Radius: float = Stats.explode_Radius
 
 var target_color:Color = Color(1,0,0,1)
 
@@ -25,7 +24,11 @@ func _ready():
 	var New_Explosion = CircleShape2D.new()
 	New_Explosion.radius = Explosion_Radius #The size that you want
 	explosion_Hurtbox.shape = New_Explosion
-	explosion_sprite.scale = Vector2(explosion_sprite.scale.x * Explosion_Radius*(1 + Level_Up_Walk_Speed*(Level-1))/Explosion_Radius, explosion_sprite.scale.y * Explosion_Radius*(1 + Level_Up_Walk_Speed*(Level-1))/Explosion_Radius)
+	
+	Level = Stats.total_Level + Stats.explode_Level
+	explosion_sprite.scale = Vector2(explosion_sprite.scale.x * Stats.explode_Radius*(1 + Stats.explode_Level_Up_Walk_Speed*(Level-1))/Stats.explode_Radius, explosion_sprite.scale.y * Stats.explode_Radius*(1 + Stats.explode_Level_Up_Walk_Speed*(Level-1))/Stats.explode_Radius)
+	
+	explosion_timer.wait_time = Stats.explode_Timer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -45,7 +48,7 @@ func Navigate(Point):
 	direction = direction.normalized()
 	
 	velocity = direction * movement_speed
-	velocity *= (1 + Level_Up_Walk_Speed*(Level-1))
+	velocity *= (1 + Stats.explode_Level_Up_Walk_Speed*(Level-1))
 
 func Die():
 	current_State = State.KABOOM
@@ -70,12 +73,10 @@ func _on_explosion_timer_timeout():
 	explosion.monitoring = true
 	#This is where we'd put some an animation for the sprite.
 
-
+#TODO: Put the Damage Value in here
 func Player_Hit(body):
 	if body.has_method("take_damage"):
-		print("HOW COULD YOU")
 		body.take_damage(Damage)
-
 
 func _on_explosion_duration_timeout():
 	queue_free()
