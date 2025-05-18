@@ -13,12 +13,15 @@ const turn_speed = 1.0
 @onready var bullet_audio = $LeftGun/BulletAudio
 @onready var laser_audio = $RightGun/LaserAudio
 
+@onready var player_label = $Label
+
 const PUSH_FORCE = 300.0
 const MIN_PUSH_FORCE = 250.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	player_label.text = "hp:\n" + str(Stats.player_hp_current)
+
 
 func _physics_process(delta):
 	var left_tread = 0
@@ -156,6 +159,5 @@ func fire_right():
 	get_tree().root.add_child(b)
 
 func take_damage(damage: float):
-	for i in 99:
-		print("Agony.")
-	#get_tree().quit()
+	Stats.player_hp_current = Stats.player_hp_current
+	player_label.text = "hp: " + str(Stats.player_hp_current)

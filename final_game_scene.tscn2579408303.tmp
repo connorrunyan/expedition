@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqxyfkcwixshc"]
+
+[ext_resource type="Script" uid="uid://cbromv3k2v7jg" path="res://final_game_scene.gd" id="1_e71gk"]
+[ext_resource type="PackedScene" uid="uid://fake285l7wrm" path="res://sun.tscn" id="1_k7jnd"]
+[ext_resource type="PackedScene" uid="uid://bce1lpbpk7x84" path="res://station.tscn" id="2_e71gk"]
+[ext_resource type="PackedScene" uid="uid://crmhr01w6rifg" path="res://player_bot.tscn" id="3_c7l1c"]
+[ext_resource type="PackedScene" uid="uid://ytg5oq42ni4b" path="res://repair_thing.tscn" id="5_c7l1c"]
+
+[node name="FinalGameScene" type="Node2D"]
+script = ExtResource("1_e71gk")
+
+[node name="Sun" parent="." instance=ExtResource("1_k7jnd")]
+
+[node name="Station" parent="." instance=ExtResource("2_e71gk")]
+scale = Vector2(2, 2)
+
+[node name="PlayerBot" parent="." instance=ExtResource("3_c7l1c")]
+
+[node name="RepairThings" type="Node2D" parent="."]
+
+[node name="RepairThing" parent="RepairThings" instance=ExtResource("5_c7l1c")]
+position = Vector2(-5038, -1224)
+scale = Vector2(4, 4)
+
+[node name="RepairThing2" parent="RepairThings" instance=ExtResource("5_c7l1c")]
+position = Vector2(-5038, 1070)
+scale = Vector2(4, 4)
+
+[node name="RepairThing3" parent="RepairThings" instance=ExtResource("5_c7l1c")]
+position = Vector2(25, 1937)
+scale = Vector2(4, 4)
+
+[node name="RepairThing4" parent="RepairThings" instance=ExtResource("5_c7l1c")]
+position = Vector2(-832, -2220)
+scale = Vector2(4, 4)
+
+[node name="RepairThing5" parent="RepairThings" instance=ExtResource("5_c7l1c")]
+position = Vector2(3029, 617)
+scale = Vector2(4, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)

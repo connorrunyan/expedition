@@ -9,6 +9,8 @@ class_name Enemy
 @export var Health: float = MaxHealth
 @export var Level: float = 1
 
+var rng = RandomNumberGenerator.new()
+
 const UPGRADE = preload("res://upgrade.tscn")
 #TODO: Think about what stuff every enemy needs.
 #TODO: Write a pathfinding function.
@@ -17,8 +19,20 @@ const UPGRADE = preload("res://upgrade.tscn")
 func takeDamage(damage: float):
 	Health = Health - Damage
 
-func die():
+func Die():
+	drop_Chance()
 	queue_free()
+
+func drop_Chance():
+	var chance = rng.randi_range(1, 100)
+	
+	print(chance)
+	
+	if chance + Stats.player_Luck >= 50:
+		Stats.player_Luck = 0
+		drop_Loot()
+	else:
+		Stats.player_Luck += 2
 
 func drop_Loot():
 	var u = UPGRADE.instantiate()

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dpvcitogmyuco" path="res://ui.tscn" id="1_6dqfw"]
 [ext_resource type="Texture2D" uid="uid://c3353jmoegdqi" path="res://assets/icon.svg" id="2_bc64o"]
 [ext_resource type="PackedScene" uid="uid://crmhr01w6rifg" path="res://player_bot.tscn" id="3_3efis"]
-[ext_resource type="PackedScene" uid="uid://b0gu53xmeo8hp" path="res://EnemyExploder.tscn" id="4_bc64o"]
+[ext_resource type="PackedScene" uid="uid://ctcc1xykyq00a" path="res://EnemyExploder.tscn" id="4_bc64o"]
 [ext_resource type="PackedScene" uid="uid://csrbq0n68odwo" path="res://EnemyCharger.tscn" id="5_3efis"]
 [ext_resource type="Texture2D" uid="uid://ik4epbgswp51" path="res://assets/kenney/spaceBuilding_017.png" id="6_nvjax"]
 [ext_resource type="PackedScene" uid="uid://tqpelmgcbx74" path="res://EnemySpikeStrip.tscn" id="8_klvis"]

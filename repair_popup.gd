@@ -1,5 +1,6 @@
 extends Control
 
+var go_title = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,3 +16,5 @@ func _process(delta):
 func _on_button_pressed():
 	visible = false
 	get_tree().paused = false
+	if go_title:
+		get_tree().change_scene_to_file("res://TitleScreen.tscn")

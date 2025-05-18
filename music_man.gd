@@ -14,6 +14,9 @@ extends Node
 @onready var darkling: AudioStreamPlayer = $darkling
 @onready var destroyTheSun: AudioStreamPlayer = $destroyTheSun
 
+func _ready():
+	iCanFeelItComing.play(0.0)
+
 func game_started():
 	iCanFeelItComing.stop()
 	hotPursuit.stop()

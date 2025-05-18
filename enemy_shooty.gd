@@ -24,7 +24,7 @@ func _physics_process(delta):
 	
 	shootTimer += delta
 	
-	if shootTimer >= shootTimerDuration:
+	if shootTimer >= shootTimerDuration && position.distance_to(player.position) <= Stats.shooty_Max_Range:
 		shoot()
 
 	move_and_slide()
@@ -46,8 +46,6 @@ func Navigate(Point):
 	velocity = direction * movement_speed
 	velocity *= (1 + Stats.explode_Level_Up_Walk_Speed*(Level-1))
 
-func Die():
-	queue_free()
 	
 func _Player_Entered_Radius(area):
 	print("Player entered Radius")

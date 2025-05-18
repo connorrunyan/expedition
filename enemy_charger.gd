@@ -68,8 +68,6 @@ func Init_Charge():
 	chargeDirection = global_position.direction_to(player.position)
 	WindupTimer.start()
 	
-func Die():
-	queue_free()
 
 #TODO: Put the Damage Value in here, maybe increase it when the goober is charging
 func Player_Hit(body):

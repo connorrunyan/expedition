@@ -3,7 +3,7 @@ extends Control
 @onready var credits = $"Credits container"
 
 func _ready():
-	MusicMan.finale_started()
+	pass
 
 func _on_end_pressed():
 	get_tree().quit()
