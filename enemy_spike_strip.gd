@@ -72,7 +72,7 @@ func charge(delta):
 		spike_drop_Timer = 0.0
 		
 func drop_Spike():
-	var s = SPIKES.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	var s = SPIKES.instantiate()
 	s.global_position = global_position
 	get_tree().root.add_child(s)
 	

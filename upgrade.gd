@@ -98,6 +98,7 @@ func _on_panel_mouse_exited():
 	
 
 var normal_upsides = [
+	upgrade_data.new("+%d\nPlayer HP", "player_hp_current", 1),
 	upgrade_data.new("+%d\nPlayer Bullet Damage", "player_bullet_damage", 1),
 	upgrade_data.new("+%d\nPlayer Turn Radius", "player_turn_radius", 1),
 	upgrade_data.new("+%d\nPlayer Move Speed", "player_move_speed", 20),
@@ -133,6 +134,7 @@ var normal_downsides = [
 	]
 	
 var rare_upsides = [
+	upgrade_data.new("+%d\nPlayer HP", "player_hp_current", 3),
 	upgrade_data.new("+%d\nPlayer Bullet Damage", "player_bullet_damage", 3),
 	upgrade_data.new("+%d\nPlayer Turn Radius", "player_turn_radius", 3),
 	upgrade_data.new("+%d\nPlayer Move Speed", "player_move_speed", 50),
@@ -147,13 +149,14 @@ var rare_downsides = [
 	upgrade_data.new("%d\nPlayer Bullet Damage", "player_bullet_damage", -2),
 	upgrade_data.new("%d\nPlayer Turn Radius", "player_turn_radius", -2),
 	upgrade_data.new("%d\nPlayer Move Speed", "player_move_speed", -30),
-	upgrade_data.new("+%d\nExploder Level", "explode_Level", 3),
-	upgrade_data.new("+%d\nCharger Level", "charge_Level", 3),
-	upgrade_data.new("+%d\nSpike Strip Level", "spike_Level", 3),
-	upgrade_data.new("+%d\nShooter Level", "shooty_Level", 3),
+	upgrade_data.new("+%d\nExploder Level", "explode_Level", 2),
+	upgrade_data.new("+%d\nCharger Level", "charge_Level", 2),
+	upgrade_data.new("+%d\nSpike Strip Level", "spike_Level", 2),
+	upgrade_data.new("+%d\nShooter Level", "shooty_Level", 2),
 	]
 	
 var legendary_upsides = [
+	upgrade_data.new("+%d\nPlayer HP", "player_hp_current", 10),
 	upgrade_data.new("+%d\nPlayer Bullet Damage", "player_bullet_damage", 10),
 	upgrade_data.new("+%d\nPlayer Turn Radius", "player_turn_radius", 10),
 	upgrade_data.new("+%d\nPlayer Move Speed", "player_move_speed", 150),
@@ -166,6 +169,7 @@ var legendary_downsides = [
 	]
 	
 var exotic_upsides = [
+	upgrade_data.new("+%d\nPlayer HP", "player_hp_current", 50),
 	upgrade_data.new("+%d\nPlayer Bullet Damage", "player_bullet_damage", 50),
 	upgrade_data.new("+%d\nPlayer Turn Radius", "player_turn_radius", 50),
 	upgrade_data.new("+%d\nPlayer Move Speed", "player_move_speed", 500),

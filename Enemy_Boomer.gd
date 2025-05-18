@@ -9,7 +9,6 @@ var current_State: State = State.ATTACK
 @onready var explosion = $Explosion
 @onready var navMesh = get_tree().get_first_node_in_group("NavMesh")
 @onready var navigation_agent_2d = $NavigationAgent2D
-@onready var explosion_Hurtbox = $Explosion/ExplosionRadius
 
 @onready var explode_Health: float = Stats.explode_MaxHealth
 

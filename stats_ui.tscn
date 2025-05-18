@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dyqqohyxyq4il" path="res://stats_ui.gd" id="1_h18qs"]
 
 [node name="StatsUI" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 11
 anchor_left = 1.0

@@ -2,7 +2,6 @@ extends Enemy
 
 @onready var navMesh = get_tree().get_first_node_in_group("NavMesh")
 @onready var navigation_agent_2d = $NavigationAgent2D
-@onready var explosion_Hurtbox = $Explosion/ExplosionRadius
 
 @onready var health: float = Stats.explode_MaxHealth
 
@@ -30,7 +29,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func shoot():
-	var b = PROJECTILE.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
+	var b = PROJECTILE.instantiate()
 	b.global_position = global_position
 	b.dir = position.direction_to(player.position)
 	get_tree().root.add_child(b)
