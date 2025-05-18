@@ -23,7 +23,6 @@ texture = ExtResource("2_h13ek")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 40.0
 path_max_distance = 50.0
-debug_enabled = true
 debug_path_custom_point_size = 20.0
 debug_path_custom_line_width = 5.0
 

@@ -22,6 +22,8 @@ var player_move_speed = 1000.0
 var player_bullet_damage = 5.0
 var player_laser_damage = 5.0
 
+var player_Luck: int = 0
+
 #Enemy Stats
 var total_Level = 1
 #Exploder Stats
@@ -73,3 +75,4 @@ var shooty_movement_speed: float = 100.0
 var shooty_Damage: float = 2
 var shooty_MaxHealth: float = 10
 var shooty_projectile_speed:float = 2000
+var shooty_Max_Range: float = 4000

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ba3m0omksusmn"]
+[gd_scene load_steps=0 format=3 uid="uid://ba3m0omksusmn"]
 
 [node name="RepairUI" type="Control"]
 layout_mode = 3
