@@ -26,10 +26,6 @@ func _ready():
 	
 	explosion_sprite.scale = Vector2(explosion_sprite.scale.x * Stats.explode_Radius*(1 + Stats.explode_Level_Up_Radius_Increase*(Level-1))/Stats.explode_Radius, explosion_sprite.scale.y * Stats.explode_Radius*(1 + Stats.explode_Level_Up_Radius_Increase*(Level-1))/Stats.explode_Radius)
 
-
-	
-	#explosion_timer.wait_time = Stats.explode_Timer
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if Health <= 0 && current_State != State.KABOOM:
